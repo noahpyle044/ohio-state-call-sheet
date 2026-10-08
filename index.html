@@ -1,4 +1,9 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Call Sheet Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,6 +137,41 @@ button.chip{cursor:pointer;min-height:28px}
 .modal[hidden],.toast[hidden]{display:none}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:6px;font-size:14px;z-index:30;max-width:calc(100% - 32px)}
 
+.panel img{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:4px;margin-bottom:6px}
+.snap .addrow,.snap .sft,.snap .cacts{display:none!important}
+.snap .sec.on{box-shadow:none}
+
+@media print{
+  @page{size:letter landscape;margin:.35in}
+  html:root,html:root[data-theme="dark"],html:root:not([data-theme="light"]){
+    --bg:#ffffff; --surface:#ffffff; --surface2:#f1efee; --fg:#111111; --muted:#555555; --line:#cfcac7;
+    --accent:#b80d0d; --accent-fg:#ffffff; --accent-soft:#f6dcdc; --focus:#1d6fd6;
+    --run:#8a4a05; --run-bg:#f8e8d0; --pass:#0f5aa8; --pass-bg:#dcebf9; --pa:#6a2aa2; --pa-bg:#ebe0f6;
+    --rpo:#0a736d; --rpo-bg:#d8f0ee; --scr:#9a2556; --scr-bg:#f7dfe9;
+    color-scheme:light;
+  }
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:9px}
+  .top,.bar,.foot,.sft,.cacts,.addrow,#viewBook,.toast,.modal{display:none!important}
+  #viewSheet{display:block!important}
+  .wrap{max-width:none;padding:0}
+  .shead{padding:0 0 6px}
+  .shead h2{font-size:20px}
+  .shead p{font-size:10px}
+  .grid{display:block;column-count:3;column-gap:8px}
+  .sec{break-inside:avoid;margin:0 0 8px;border-width:1.5px}
+  .sec.on{box-shadow:none}
+  .shd{padding:4px 7px}
+  .shd h3{font-size:13px}
+  .shd .sub{display:none}
+  .shd .cnt{font-size:12px}
+  .crow{grid-template-columns:12px 20px minmax(0,1fr) auto;gap:4px;padding:2px 6px;cursor:auto}
+  .num,.pers{font-size:9px}
+  .ctext .form{font-size:7px}
+  .ctext b{font-size:10px}
+  .chip{font-size:7px;padding:1px 4px}
+}
+
 @media (max-width:520px){
   .brand h1{font-size:28px}
   .shead h2{font-size:24px}
@@ -141,6 +181,9 @@ button.chip{cursor:pointer;min-height:28px}
   .sec,.addbtn{transition:border-color .12s}
 }
 </style>
+</head>
+<body>
+
 
 <div class="wrap">
   <header class="top">
@@ -166,8 +209,10 @@ button.chip{cursor:pointer;min-height:28px}
       <button data-act="rename">Rename</button>
       <button data-act="delSheet">Delete</button>
       <span class="sp"></span>
-      <button data-act="copyText">Copy as text</button>
+      <button data-act="print">Print / PDF</button>
+      <button data-act="image">Save image</button>
       <button data-act="csv">Export CSV</button>
+      <button data-act="copyText">Copy as text</button>
     </div>
     <div id="sheetBody"></div>
   </section>
@@ -186,13 +231,14 @@ button.chip{cursor:pointer;min-height:28px}
 
   <footer class="foot">
     <p>Plays come from the Ohio State playbook only, not every play in the game. Run, pass, PA and RPO labels are inferred from play names, so some may be off.</p>
-    <p>Sheets save in this browser on this device. Use Copy as text or Export CSV to keep a copy. Fan-made tool, not affiliated with EA Sports, Ohio State or College Football 27.</p>
+    <p>Sheets save in this browser on this device. Print / PDF opens your print screen, where you can choose Save as PDF. Save image makes a picture of the sheet, and Export CSV downloads the calls. Fan-made tool, not affiliated with EA Sports, Ohio State or College Football 27.</p>
   </footer>
 </div>
 
 <div class="modal" id="modal" hidden><div class="panel" id="modalPanel" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast" hidden></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
 'use strict';
@@ -445,10 +491,43 @@ function ask(o){
     if(inp){inp.focus();inp.select();inp.onkeydown=function(e){if(e.key==='Enter')$('#askOk').click();};}
   });
 }
-function showText(title,text){
-  openModal('<h3>'+esc(title)+'</h3><p>Copy this and paste it wherever you keep your notes.</p><textarea id="txtBox" readonly></textarea><div class="mact"><button id="txtClose">Close</button><button id="txtCopy" class="primary">Copy</button></div>',true);
+function slug(s){return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'call-sheet';}
+function saveBlob(href,name){
+  var a=document.createElement('a');a.href=href;a.download=name;a.rel='noopener';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+function showImage(url,name){
+  openModal('<h3>Call sheet image</h3><p>Touch and hold the image to save it, or tap Download.</p><img alt="Call sheet" src="'+url+'"><div class="mact"><button id="imgClose">Close</button><button id="imgDl" class="primary">Download</button></div>',true);
+  $('#imgClose').onclick=closeModal;
+  $('#imgDl').onclick=function(){saveBlob(url,slug(name)+'.png');};
+}
+function saveImage(){
+  var s=sheet();if(!s)return;
+  if(ui.tab!=='sheet')setTab('sheet');
+  if(!window.html2canvas){toast('Image saving needs an internet connection.');return;}
+  $$('.call.open').forEach(function(x){x.classList.remove('open');});
+  var root=document.documentElement;root.classList.add('snap');
+  toast('Making the image...');
+  window.html2canvas($('#sheetBody'),{backgroundColor:getComputedStyle(document.body).backgroundColor,scale:2}).then(function(cv){
+    root.classList.remove('snap');showImage(cv.toDataURL('image/png'),s.name);
+  }).catch(function(){root.classList.remove('snap');toast('Could not make the image. Try Print / PDF instead.');});
+}
+var printing=false;
+function printSheet(){
+  if(printing)return;
+  printing=true;setTimeout(function(){printing=false;},1500);
+  if(ui.tab!=='sheet')setTab('sheet');
+  $$('.call.open').forEach(function(x){x.classList.remove('open');});
+  try{window.print();}catch(e){toast('Printing is not available here.');}
+}
+function showText(title,text,file,mime){
+  openModal('<h3>'+esc(title)+'</h3><p>'+(file?'Download the file, or copy this text.':'Copy this and paste it wherever you keep your notes.')+'</p><textarea id="txtBox" readonly></textarea><div class="mact"><button id="txtClose">Close</button>'+(file?'<button id="txtDl">Download file</button>':'')+'<button id="txtCopy" class="primary">Copy</button></div>',true);
   var ta=$('#txtBox');ta.value=text;
   $('#txtClose').onclick=closeModal;
+  if(file)$('#txtDl').onclick=function(){
+    try{var u=URL.createObjectURL(new Blob([text],{type:mime||'text/plain'}));saveBlob(u,file);setTimeout(function(){URL.revokeObjectURL(u);},4000);}
+    catch(e){toast('Download is not available here. Use Copy instead.');}
+  };
   $('#txtCopy').onclick=function(){
     function fallback(){
       ta.focus();ta.select();
@@ -610,7 +689,9 @@ function act(a,el){
         activeId=sheets[0].id;ui.target=null;save();renderSheet();toast('Sheet deleted');
       });break;
     case 'copyText': if(s)showText('Call sheet as text',sheetText(s));break;
-    case 'csv': if(s)showText('Call sheet as CSV',sheetCsv(s));break;
+    case 'csv': if(s)showText('Call sheet as CSV',sheetCsv(s),slug(s.name)+'.csv','text/csv');break;
+    case 'print': printSheet();break;
+    case 'image': saveImage();break;
     case 'target': ui.target=sid;renderSheet();break;
     case 'addHere': ui.target=sid;setTab('book');break;
     case 'rerollSec':
@@ -680,10 +761,12 @@ $('#fPers').addEventListener('change',function(e){ui.pers=e.target.value;renderB
 $('#fType').addEventListener('change',function(e){ui.type=e.target.value;renderBook();});
 $('#fTarget').addEventListener('change',function(e){ui.target=e.target.value;renderBook();});
 
+window.addEventListener('beforeprint',function(){$$('.call.open').forEach(function(x){x.classList.remove('open');});});
 applyTheme(store.get('csl.theme','auto'));
 initFilters();
 renderSheet();
 })();
 </script>
 
-</body></html>
+</body>
+</html>
