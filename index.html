@@ -299,6 +299,17 @@ button{cursor:pointer}
   .band{padding:0 .5em}
 }
 @media (max-width:520px){.brand h1{font-size:28px}.tab{padding-inline:9px;font-size:16px}}
+
+/* compact: more on screen at once */
+@media screen{
+#viewEdit,#viewBook,#viewShift,#viewHome{zoom:.8}
+.bar{zoom:.9;padding-block:10px}
+.ec{padding:8px 12px}
+.ec .eb{margin-top:5px}
+.ecx{padding:7px 12px}
+.ec .eb button,.ecx .eb button{min-height:30px;padding:2px 10px}
+.pkl{max-height:78vh}
+}
 </style></head><body>
 
 <div class="wrap">
@@ -805,7 +816,33 @@ function printSheet(){
   printing=true;setTimeout(function(){printing=false;},1500);
   if(ui.tab!=='sheet')setTab('sheet');
   $$('.rw.open').forEach(function(x){x.classList.remove('open');});
-  try{window.print();}catch(e){toast('Printing is not available here.');}
+  var card=$('#card'),w=null;
+  try{w=card?window.open('','_blank'):null;}catch(e){w=null;}
+  if(!w){try{window.print();}catch(e){toast('Printing is not available here.');}return;}
+  var css=Array.prototype.map.call(document.querySelectorAll('style'),function(s){return s.textContent;}).join('\n');
+  var links=Array.prototype.map.call(document.querySelectorAll('link[rel=stylesheet]'),function(l){return l.outerHTML;}).join('');
+  var clone=card.cloneNode(true);
+  Array.prototype.forEach.call(clone.querySelectorAll('.ttl,.chead,.flipbar,.addrow,.sft,.cacts'),function(x){x.parentNode.removeChild(x);});
+  clone.className='card';
+  var pgs=clone.querySelectorAll('.pg');
+  if(pgs[0])pgs[0].setAttribute('data-s','f');
+  if(pgs[1])pgs[1].setAttribute('data-s','b');
+  var extra='html,body{margin:0}body{background:#fff}.pvbar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;background:#fff;border-bottom:2px solid #111}'+
+    '.pvbar button{border:1.5px solid #111;background:#fff;border-radius:6px;padding:6px 14px;min-height:40px;font-size:15px;font-weight:600}'+
+    '.pvbar .pri{background:#111;color:#fff}.pvbar .fl{background:#ffe680}.pvbar .sp{flex:1}'+
+    '.pvbar .seg button{border:0;border-radius:0}.pvbar .seg{display:flex;border:1.5px solid #111;border-radius:6px;overflow:hidden}.pvbar .seg button.on{background:#111;color:#fff}'+
+    '.pvw{padding:10px 14px 30px}.pvw .card{border:0;padding:0}.pvw .ptitle{display:flex}.pvw .blk.on{box-shadow:none}'+
+    '@media print{.pvbar{display:none!important}.pvw{padding:0}body.o-f .pg[data-s=b]{display:none!important}body.o-b .pg[data-s=f]{display:none!important}}';
+  var js0='var cur="f";function show(s){cur=s;var p=document.querySelectorAll(".pg");for(var i=0;i<p.length;i++){p[i].classList[p[i].getAttribute("data-s")===s?"remove":"add"]("off");}'+
+    'document.getElementById("bf").className=s==="f"?"on":"";document.getElementById("bb").className=s==="b"?"on":"";window.scrollTo(0,0);}'+
+    'function pr(m){document.body.className=m==="both"?"":"o-"+cur;window.print();}'+
+    '';
+  var bar='<div class="pvbar"><div class="seg"><button id="bf" onclick="show(\'f\')">FRONT</button><button id="bb" onclick="show(\'b\')">BACK</button></div>'+
+    '<button class="fl" onclick="show(cur===\'f\'?\'b\':\'f\')">Flip &#8635;</button><span class="sp"></span>'+
+    '<button class="pri" onclick="pr(\'one\')">Print this side</button><button onclick="pr(\'both\')">Print both (2 pages)</button><button onclick="window.close()">Close</button></div>';
+  w.document.open();
+  w.document.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(sheet().name)+' - print</title><script>'+js0+'<\/script>'+links+'<style>'+css+'\n'+extra+'</style></head><body>'+bar+'<div class="pvw">'+clone.outerHTML+'</div><script>show("f");<\/script></body></html>');
+  w.document.close();
 }
 function showText(title,text,file,mime){
   openModal('<h3>'+esc(title)+'</h3><p>'+(file?'Download the file, or copy this text.':'Copy this and paste it wherever you keep your notes.')+'</p><textarea id="txtBox" readonly></textarea><div class="mact"><button id="txtClose">Close</button>'+(file?'<button id="txtDl">Download file</button>':'')+'<button id="txtCopy" class="primary">Copy</button></div>',true);
