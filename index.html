@@ -322,6 +322,9 @@ button{cursor:pointer}
 .card.fs{padding:max(8px,env(safe-area-inset-top,0px)) 10px 8px}
 .card.fs .ttl,.card.fs .flipbar{zoom:.8}
 .card.fs .flipbar{padding-block:4px}
+#sheetBody:fullscreen{background:#fff;overflow:auto}
+#sheetBody:-webkit-full-screen{background:#fff;overflow:auto}
+.card.fs .ttl,.card.fs .flipbar{zoom:.7}
 </style></head><body>
 
 <div class="wrap">
@@ -1023,6 +1026,25 @@ function fitFs(){
   for(i=0;i<9;i++){var m=(lo+hi)/2;cols.style.zoom=m;if(c.scrollHeight<=c.clientHeight+1)lo=m;else hi=m;}
   cols.style.zoom=lo;
 }
+/* real browser full screen (hides the toolbar, gives the X button) with the page-level one as a fallback */
+function fsEl(){return document.fullscreenElement||document.webkitFullscreenElement||null;}
+function enterFs(){
+  ui.fs=true;renderSheet();window.scrollTo(0,0);
+  var h=$('#sheetBody'),f=h&&(h.requestFullscreen||h.webkitRequestFullscreen);
+  if(f){try{var r=f.call(h);if(r&&r.catch)r.catch(function(){});}catch(e){}}
+}
+function exitFs(){
+  var x=document.exitFullscreen||document.webkitExitFullscreen;
+  if(fsEl()&&x){try{x.call(document);}catch(e){}}
+  ui.fs=false;renderSheet();
+}
+function fsChange(){
+  if(!fsEl()&&ui.fs&&ui.fsReal){ui.fs=false;ui.fsReal=false;renderSheet();return;}
+  if(fsEl())ui.fsReal=true;
+  setTimeout(function(){if(ui.fs)fitFs();},150);
+}
+document.addEventListener('fullscreenchange',fsChange);
+document.addEventListener('webkitfullscreenchange',fsChange);
 window.addEventListener('resize',function(){if(ui.fs)fitFs();});
 window.addEventListener('orientationchange',function(){setTimeout(function(){if(ui.fs)fitFs();},300);});
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(ui.fs)fitFs();});
@@ -1435,7 +1457,7 @@ function act(a,el){
     case 'tab': setTab(el.getAttribute('data-tab'));break;
     case 'side': ui.side=el.getAttribute('data-side');renderSheet();break;
     case 'flip': ui.side=ui.side==='f'?'b':'f';renderSheet();break;
-    case 'fs': ui.fs=!ui.fs;renderSheet();window.scrollTo(0,0);break;
+    case 'fs': if(ui.fs)exitFs();else enterFs();break;
     case 'gen': if(ui.tab==='home')openDef('new','#homeDef');else openDef('new');break;
     case 'adj': openDef('adjust');break;
     case 'swap': ui.pend={sec:sid,i:i};openSwap();break;
