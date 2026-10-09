@@ -8,7 +8,7 @@
   --accent:#b80d0d;--focus:#1d6fd6;
   --bn-run:#f4c4cd;--bn-qs:#d3e6f6;--bn-dp:#b3cdee;--bn-rpo:#cdebd0;
   --font-display:'Archivo','Arial Narrow',Arial,sans-serif;
-  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-body:system-ui,-apple-system,'SF Pro Text','Segoe UI',Roboto,Inter,sans-serif;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -49,6 +49,12 @@ button{cursor:pointer}
 .defp{padding:14px 16px;margin-bottom:16px}
 .defp h3{margin:0 0 2px;font-size:20px;font-weight:700}
 .defp>p{margin:0 0 12px;color:var(--muted);font-size:14px}
+#homeDef{grid-column:1/-1}#homeDef:empty{display:none}
+.defrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.defrow input{width:100%;min-height:44px;border:1.5px solid #c9c9c9;border-radius:10px;padding:6px 12px;font-size:16px}
+.deff{border:1.5px solid var(--line);border-radius:8px;padding:6px 12px 12px;margin:0}
+.deff legend{font-weight:700;font-size:13px;padding:0 6px}
+@media (max-width:760px){.defrow,.defgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .defgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
 .defgrid .fld{margin:0}
 .defp .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
@@ -198,25 +204,25 @@ button{cursor:pointer}
 .card.fs{position:fixed;inset:0;z-index:15;border-radius:0;border:0;overflow:auto;padding:max(10px,env(safe-area-inset-top,0px)) 14px 28px}
 .ttl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:3px solid #111}
 .ttl .l{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;min-width:0}
-.ttl .app{font-family:var(--font-display);font-weight:900;font-stretch:122%;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
-.ttl .sn{font-family:var(--font-display);font-weight:700;font-stretch:90%;font-size:20px;line-height:1;text-transform:uppercase}
+.ttl .app{font-family:var(--font-display);font-weight:900;font-stretch:104%;font-size:30px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.ttl .sn{font-family:var(--font-display);font-weight:700;font-stretch:100%;font-size:20px;line-height:1;text-transform:uppercase}
 .cbtns,.flipbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .card button.by,.card button.bk{border:2px solid #111;border-radius:6px;padding:6px 14px;min-height:40px;font-family:var(--font-display);font-weight:700;font-size:16px}
 .card button.by{background:#ffe680;color:#111}
 .card button.bk{background:#111;color:#fff}
 .flipbar{padding-block:10px 6px}
 .seg{display:flex;border:2px solid #111;border-radius:6px;overflow:hidden}
-.seg button{border:0;background:#fff;color:#111;min-height:38px;padding:4px 22px;font-family:var(--font-display);font-weight:800;font-stretch:112%;font-size:18px;letter-spacing:.06em}
+.seg button{border:0;background:#fff;color:#111;min-height:38px;padding:4px 22px;font-family:var(--font-display);font-weight:800;font-stretch:100%;font-size:18px;letter-spacing:.06em}
 .seg button+button{border-left:2px solid #111}
 .seg button.on{background:#111;color:#fff}
-.legend{display:flex;flex-wrap:wrap;gap:4px 24px;align-items:center;font-family:var(--font-display);font-stretch:90%;font-weight:600;font-size:15px;text-transform:uppercase;color:#111}
+.legend{display:flex;flex-wrap:wrap;gap:4px 24px;align-items:center;font-family:var(--font-display);font-stretch:100%;font-weight:600;font-size:15px;text-transform:uppercase;color:#111}
 .legend>span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
 .legend>span>i{font-style:normal;font-weight:800}
 .flipbar .legend{padding-top:6px;flex-basis:100%}
 .ptitle{display:none}
 .pg.off{display:none}
 .pages{padding-top:6px}
-.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start;font-size:clamp(10px,.9vw,14px);font-family:var(--font-display);font-stretch:78%}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start;font-size:clamp(10px,.9vw,14px);font-family:var(--font-display);font-stretch:92%}
 .card.fs .cols{font-size:clamp(10px,.98vw,19px)}
 .col{display:flex;flex-direction:column;gap:12px;min-width:0}
 .blk{border:1.5px solid #111;background:#fff;overflow:hidden}
@@ -266,8 +272,8 @@ button{cursor:pointer}
 .snap .ptitle{display:flex}
 .snap .blk.on{box-shadow:none}
 .ptitle{flex-wrap:wrap;align-items:center;gap:4px 16px;padding-bottom:6px;margin-bottom:6px;border-bottom:3px solid #111}
-.ptitle .app{font-family:var(--font-display);font-weight:900;font-stretch:122%;font-size:26px;line-height:1;text-transform:uppercase}
-.ptitle .sn{font-family:var(--font-display);font-weight:700;font-stretch:90%;font-size:18px;text-transform:uppercase}
+.ptitle .app{font-family:var(--font-display);font-weight:900;font-stretch:104%;font-size:26px;line-height:1;text-transform:uppercase}
+.ptitle .sn{font-family:var(--font-display);font-weight:700;font-stretch:100%;font-size:18px;text-transform:uppercase}
 .ptitle .legend{flex-basis:100%}
 
 @media print{
@@ -288,7 +294,7 @@ button{cursor:pointer}
   .ptitle{display:flex!important;padding-bottom:3px;margin-bottom:5px;border-bottom-width:2px}
   .ptitle .app{font-size:17px}.ptitle .sn{font-size:13px}
   .ptitle .legend{font-size:8.5px;gap:2px 14px}
-  .cols,.card.fs .cols{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px;font-size:6.9px}
+  .cols,.card.fs .cols{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px;font-size:6.9px;font-stretch:78%}
   .col{gap:5px}
   .blk{break-inside:avoid;border-width:1px}
   .bh{font-size:1.35em}
@@ -310,6 +316,9 @@ button{cursor:pointer}
 .ec .eb button,.ecx .eb button{min-height:30px;padding:2px 10px}
 .pkl{max-height:78vh}
 }
+.card.fs{padding:max(8px,env(safe-area-inset-top,0px)) 10px 8px}
+.card.fs .ttl,.card.fs .flipbar{zoom:.8}
+.card.fs .flipbar{padding-block:4px}
 </style></head><body>
 
 <div class="wrap">
@@ -707,7 +716,7 @@ function buildSection(d,o,gs){
   return {id:d.id,title:d.title,calls:calls};
 }
 function generate(o,keepOpen,prev){
-  var gs={used:{},names:{}}, out=[];
+  var gs={used:{},names:{}}, out=[], fresh=[];
   DEFS.forEach(function(d){
     if(keepOpen&&prev&&(d.id==='open'||d.id==='open2')){
       var old=prev.sections.filter(function(s){return s.id===d.id;})[0];
@@ -716,14 +725,34 @@ function generate(o,keepOpen,prev){
         out.push(JSON.parse(JSON.stringify(old)));return;
       }
     }
-    out.push(buildSection(d,o,gs));
+    var bs=buildSection(d,o,gs);out.push(bs);fresh=fresh.concat(bs.calls);
   });
+  flavor(fresh,o);
   if(prev){
     prev.sections.forEach(function(s){
       if(!defOf(s.id)&&isCustom(s))out.push(JSON.parse(JSON.stringify(s)));
     });
   }
   return out;
+}
+var OFFL=[['none','None'],['few','A few (about 10%)'],['some','Some (about 15%)'],['lots','Lots (about 25%)']];
+var SHFL=[['none','None'],['few','A few'],['normal','Normal'],['lots','Lots']];
+var OFFF={none:0,few:.1,some:.15,lots:.25},SHFF={none:0,few:.08,normal:.2,lots:.4};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),x=a[i];a[i]=a[j];a[j]=x;}return a;}
+/* off-script stars and pre-snap shifts, as a share of the generated calls */
+function flavor(calls,o){
+  var n=calls.length;if(!n)return;
+  var off=OFFF[o.off||'some'],shf=SHFF[o.shf||'normal'];
+  calls.forEach(function(c){delete c.st;});
+  shuffle(calls).slice(0,Math.round(n*(off==null?.15:off))).forEach(function(c){c.st=1;});
+  var sv=shifts();
+  shuffle(calls).slice(0,Math.round(n*(shf==null?.2:shf))).forEach(function(c){
+    var from=c.f,pe=SETS[from]?SETS[from].pers:'';
+    var saved=(sv[from]||[]).filter(function(f){return f!==from&&SETS[f];});
+    var same=(FORMS||[]).filter(function(f){return f!==from&&SETS[f]&&SETS[f].pers===pe;});
+    var pool=saved.length?saved:same;
+    if(pool.length)c.sh=pool[Math.floor(Math.random()*pool.length)];
+  });
 }
 function isCustom(s){return /^c[a-z0-9]{7}$/.test(s.id);}
 function blankSections(){return DEFS.map(function(d){return {id:d.id,title:d.title,calls:[]};});}
@@ -757,6 +786,7 @@ function addSheet(name,o,sections){
   var s={id:uid(),name:name,opp:o,sections:sections,v:3};
   sheets.push(s);activeId=s.id;ui.target=null;save();return s;
 }
+buildSets();
 if(!sheets.length){
   var ex={pb:'',cov:'c3',press:'',box:'normal',weak:''};
   addSheet('Example plan vs Cover 3',ex,generate(ex,false,null));
@@ -980,7 +1010,20 @@ function drawSheet(){
     '<div class="flipbar"><div class="seg"><button class="'+(ui.side==='f'?'on':'')+'" data-act="side" data-side="f">FRONT</button><button class="'+(ui.side==='b'?'on':'')+'" data-act="side" data-side="b">BACK</button></div><button class="by" data-act="flip">Flip ↻</button><div class="legend">'+legendHtml()+'</div></div>'+
     '<div class="pages"><div class="pg'+(ui.side==='f'?'':' off')+'">'+title('f')+'<div class="cols">'+pg.f+'</div></div><div class="pg'+(ui.side==='b'?'':' off')+'">'+title('b')+'<div class="cols">'+pg.b+'</div></div></div>'+
     (edit?'':'')+'</div>';
+  if(ui.fs)fitFs();
 }
+/* full screen: shrink the sheet until a whole side fits the screen, like Buzz's */
+function fitFs(){
+  var c=$('#card');if(!c||!ui.fs)return;
+  var cols=c.querySelector('.pg:not(.off) .cols');if(!cols)return;
+  var lo=.3,hi=1.15,i;
+  for(i=0;i<9;i++){var m=(lo+hi)/2;cols.style.zoom=m;if(c.scrollHeight<=c.clientHeight+1)lo=m;else hi=m;}
+  cols.style.zoom=lo;
+}
+window.addEventListener('resize',function(){if(ui.fs)fitFs();});
+window.addEventListener('orientationchange',function(){setTimeout(function(){if(ui.fs)fitFs();},300);});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(ui.fs)fitFs();});
+
 /* ---------- rendering: shared bits ---------- */
 function opt(v,t,sel){return '<option value="'+esc(v)+'"'+(sel?' selected':'')+'>'+esc(t)+'</option>';}
 var PCOL={'11':'#bcdcfb','12':'#c4ecb0','21':'#d7c8f3','22':'#c9b3ee','10':'#b7e3df','01':'#8fd3cd','20':'#f5b95a','23':'#f4a6a6','32':'#f7b6d2'};
@@ -1037,38 +1080,41 @@ function pbHtml(val){
 function defSel(id,label,list,val){
   return '<label class="fld"><span>'+label+'</span><select id="'+id+'">'+list.map(function(a){return opt(a[0],a[1],a[0]===(val||''));}).join('')+'</select></label>';
 }
-function openDef(mode){
+function openDef(mode,host){
+  host=host||'#defPanel';
   var s=sheet();
   if(mode==='adjust'&&!s)mode='new';
   var o=(mode==='adjust')?(s.opp||{}):{pb:'',cov:'',press:'',box:'',weak:''};
+  var tail=mode==='adjust'?'':'';
   var h='<div class="cardx defp"><h3>'+(mode==='adjust'?'Adjust defense':'Generate a sheet')+'</h3><p>'+(mode==='adjust'?'Changed what you\'re seeing? Update the read and the calls redraw for it.':'Tell it what the defense shows. Leave anything you do not know on Not sure.')+'</p>'+
-    '<div class="defgrid"><label class="fld"><span>Their playbook</span><select id="dPb">'+pbHtml(o.pb)+'</select></label>'+
-    defSel('dCov','Coverage',COV,o.cov)+defSel('dPress','Pressure',PRESS,o.press)+defSel('dBox','Box count',BOX,o.box)+defSel('dWeak','Where they\'re weakest',WEAK,o.weak)+'</div>';
-  if(mode==='new')h+='<label class="fld" style="margin-top:12px;max-width:360px"><span>Sheet name (optional)</span><input type="text" id="dName" maxlength="60" placeholder="vs Michigan"></label>';
-  else h+='<label class="chk" style="margin-top:12px"><input type="checkbox" id="dKeep" checked> Keep my opening script and 2nd-half series as they are</label>';
-  h+='<div class="acts">'+(mode==='adjust'?'<button class="pri" id="dUpd">Update this sheet</button><button id="dNew">Save as a new sheet</button>':'<button class="pri" id="dNew">Generate sheet</button>')+'<button id="dNo">Cancel</button></div>'+
-    (mode==='adjust'?'<p class="note">Generated sections are redrawn for the new read, so hand edits inside them are replaced. Save as a new sheet to keep this one.</p>':'')+'</div>';
-  $('#defPanel').innerHTML=h;
-  function read(){return {pb:$('#dPb').value,cov:$('#dCov').value,press:$('#dPress').value,box:$('#dBox').value,weak:$('#dWeak').value};}
+    '<div class="defrow">'+(mode==='new'?'<label class="fld"><span>Sheet name</span><input type="text" id="dName" maxlength="60" placeholder="vs Michigan"></label>':'')+
+    defSel('dOff','Off-script calls',OFFL,o.off||'some')+defSel('dShf','Pre-snap shifts',SHFL,o.shf||'normal')+'</div>'+
+    '<fieldset class="deff"><legend>Opponent defense</legend><div class="defgrid"><label class="fld"><span>Their playbook</span><select id="dPb">'+pbHtml(o.pb)+'</select></label>'+
+    defSel('dBox','Box count',BOX,o.box)+defSel('dCov','Coverage',COV,o.cov)+defSel('dPress','Pressure',PRESS,o.press)+defSel('dWeak','Where they\'re weakest',WEAK,o.weak)+'</div></fieldset>';
+  if(mode!=='new')h+='<label class="chk" style="margin-top:12px"><input type="checkbox" id="dKeep" checked> Keep my opening script and 2nd-half series as they are</label>';
+  h+='<div class="acts">'+(mode==='adjust'?'<button class="pri" id="dUpd">Update this sheet</button><button id="dNew">Save as a new sheet</button>':'<button class="pri" id="dNew">Generate</button>')+'<button id="dNo">Cancel</button></div>'+
+    '<p class="note">'+(mode==='adjust'?'Generated sections are redrawn for the new read, so hand edits inside them are replaced. Save as a new sheet to keep this one.':'Builds a real call sheet: an opening script, a base menu by personnel (11, 12, heavy) for normal downs, and situation boxes for 3rd down, short yardage, red zone, goal line and the clock. The defense decides which plays rank highest.')+'</p></div>';
+  $(host).innerHTML=h;
+  function read(){return {pb:$('#dPb').value,cov:$('#dCov').value,press:$('#dPress').value,box:$('#dBox').value,weak:$('#dWeak').value,off:$('#dOff').value,shf:$('#dShf').value};}
   $('#dPb').onchange=function(){
     var r=pbPrefill(this.value);
     if(this.value){$('#dCov').value=r.cov||'';$('#dPress').value=r.press||'';if(r.box)$('#dBox').value=r.box;}
   };
-  $('#dNo').onclick=function(){$('#defPanel').innerHTML='';};
+  $('#dNo').onclick=function(){$(host).innerHTML='';};
   $('#dNew').onclick=function(){
     var op=read(),nm=($('#dName')?$('#dName').value.trim():'');
     if(!nm)nm=op.pb?('Plan vs '+op.pb):(op.cov?('Plan vs '+lbl(COV,op.cov).replace(/ \(.*\)/,'')):('Game plan '+(sheets.length+1)));
     addSheet(nm,op,generate(op,false,null));
-    $('#defPanel').innerHTML='';
+    $(host).innerHTML='';
     if(ui.tab!=='sheet'&&ui.tab!=='edit')setTab('sheet');else renderSheet();
     toast('Sheet created');
   };
   if(mode==='adjust')$('#dUpd').onclick=function(){
     var op=read(),keep=$('#dKeep').checked;
     s.sections=generate(op,keep,s);s.opp=op;s.v=3;ui.target=null;save();
-    $('#defPanel').innerHTML='';renderSheet();toast('Sheet updated');
+    $(host).innerHTML='';renderSheet();toast('Sheet updated');
   };
-  var pn=$('#defPanel');if(pn.scrollIntoView)pn.scrollIntoView({block:'nearest'});
+  var pn=$(host);if(pn.scrollIntoView)pn.scrollIntoView({block:'nearest'});
 }
 
 /* ---------- edit tab ---------- */
@@ -1228,7 +1274,7 @@ function formPick(title,text,from,onPick){
 
 /* ---------- home ---------- */
 function renderHome(){
-  $('#viewHome').innerHTML='<div class="home"><div class="cardx hero"><h2>Build a call sheet from the Ohio State playbook</h2><p>Tell it what the defense shows and it fills a front and back call sheet from your playbook. Then swap, shift and reorder calls until it is yours.</p><div class="acts"><button class="pri" data-act="gen">Generate sheet</button><button data-act="tab" data-tab="sheet">Open call sheet</button></div></div>'+
+  $('#viewHome').innerHTML='<div class="home"><div id="homeDef"></div>'+'<div class="cardx hero"><h2>Build a call sheet from the Ohio State playbook</h2><p>Tell it what the defense shows and it fills a front and back call sheet from your playbook. Then swap, shift and reorder calls until it is yours.</p><div class="acts"><button class="pri" data-act="gen">Generate sheet</button><button data-act="tab" data-tab="sheet">Open call sheet</button></div></div>'+
     '<div class="cardx"><h3>1. Read the defense</h3><p>Pick their playbook, coverage, pressure, box count and where they are weakest. Adjust defense redraws the calls when the read changes.</p></div>'+
     '<div class="cardx"><h3>2. Edit the calls</h3><p>In the Edit tab, select a context, add plays from the playbook, swap a play, move it to another personnel group or add a shift.</p></div>'+
     '<div class="cardx"><h3>3. Learn the sets</h3><p>The Playbook tab lists every set and play. The Shift chart keeps the shifts you like for each set.</p></div>'+
@@ -1387,7 +1433,7 @@ function act(a,el){
     case 'side': ui.side=el.getAttribute('data-side');renderSheet();break;
     case 'flip': ui.side=ui.side==='f'?'b':'f';renderSheet();break;
     case 'fs': ui.fs=!ui.fs;renderSheet();window.scrollTo(0,0);break;
-    case 'gen': if(ui.tab!=='sheet'&&ui.tab!=='edit')setTab('sheet');openDef('new');break;
+    case 'gen': if(ui.tab==='home')openDef('new','#homeDef');else openDef('new');break;
     case 'adj': openDef('adjust');break;
     case 'swap': ui.pend={sec:sid,i:i};openSwap();break;
     case 'pick': doSwap(parseInt(el.getAttribute('data-id'),10));break;
