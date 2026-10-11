@@ -641,6 +641,8 @@ function scorePlay(p,kind,o){
     case 'runout': if(ins)s+=2; if(out)s+=.6; if(/Draw/.test(p.play))s-=1; break;
     case 'spec': if(p.fl.t)s+=4; if(/Jet|Wildcat|Orbit/.test(p.play))s+=1; break;
     case 'bb': if(p.fl.bb)s+=2; if(t==='Screen')s+=1.2; if(c.quick)s+=.8; break;
+    case 'eogrz': if(c.rz)s+=2; if(c.deep)s+=.8; if(c.flood)s+=.6; if(c.quick&&!c.rz)s-=1; break;
+    case 'eoghm': if(/Vertical/i.test(p.play))s+=3; if(/Shot|Fade|\bGO\b/.test(p.play))s+=1; if(c.deep)s+=1; break;
     case 'fringe': if(t==='PA')s+=1; if(c.deep&&pass)s+=.6; if(c.flood)s+=.6; if(ins)s+=.8; if(c.cross)s+=.4; break;
     case 'shots': if(t==='PA')s+=1.5; if(c.deep)s+=1; if(/Shot/.test(p.play))s+=1.2; break;
   }
@@ -683,6 +685,7 @@ var DEFS = [
   {id:'open2',title:'Opening 2nd half',kind:'open',n:6,rev:1,sits:OPEN2,side:'f',col:3,hd:'k',mode:'plain'},
   {id:'p2b',title:'21 / 22 / heavy',kind:'base',pers:['21','22','23','32'],quota:{Run:8,Pass:3,PA:5},cap:5,side:'f',col:3,hd:'lv',mode:'type',subs:1,star:1},
   {id:'t710',title:'3rd & 7-10',kind:'3long',n:9,side:'f',col:3,hd:'y',mode:'sit'},
+  {id:'d4',title:'4th down',kind:'d4',groups:[{n:'4th & short',k:'short',cnt:3,cls:'or',types:['Run','PA','Pass']},{n:'4th & medium',k:'first',cnt:3,cls:'or'}],side:'f',col:3,hd:'y',mode:'groups',flat:1},
   /* back */
   {id:'short',title:'Short yardage',kind:'short',quota:{Run:3,Pass:2,PA:1},side:'b',col:0,hd:'pk',mode:'sit'},
   {id:'gl',title:'Goal line (+4 to +1)',kind:'gl',quota:{Run:5,PA:2,Pass:2},cap:3,side:'b',col:0,hd:'sa',mode:'sit'},
@@ -696,7 +699,8 @@ var DEFS = [
   {id:'spec',title:'Specials',kind:'spec',n:8,side:'b',col:2,hd:'dk',mode:'sit'},
   {id:'lowred',title:'Low red (+10 to +5)',kind:'lowred',quota:{Run:2,PA:1,Pass:2,RPO:1},side:'b',col:3,hd:'sc',mode:'sit'},
   {id:'min2',title:'2-minute',kind:'min2',groups:[{n:'Need 7',k:'clock7',cnt:9,cls:'or'},{n:'Need 3 / end of half',k:'clock3',cnt:7,cls:'or'}],side:'b',col:3,hd:'or',mode:'groups'},
-  {id:'bb',title:'Blitz beaters',kind:'bb',n:7,side:'b',col:3,hd:'dk',mode:'sit'}
+  {id:'bb',title:'Blitz beaters',kind:'bb',n:7,side:'b',col:3,hd:'dk',mode:'sit'},
+  {id:'last',title:'Last play',kind:'last',groups:[{n:'From the +25 to +10',k:'eogrz',cnt:4,cls:'or'},{n:'Deep heave',k:'eoghm',cnt:2,cls:'or'}],side:'b',col:3,hd:'or',mode:'groups',flat:1}
 ];
 function defOf(id){for(var i=0;i<DEFS.length;i++){if(DEFS[i].id===id)return DEFS[i];}return null;}
 
@@ -712,6 +716,8 @@ function poolFor(d,kind){
     case 'clock': case 'clock7': case 'clock3': return PLAYS.filter(function(p){return p.type!=='Run'&&p.type!=='RPO'&&NOHEAVY(p);});
     case 'runout': return PLAYS.filter(function(p){return p.type==='Run'&&NOHEAVY(p);});
     case 'screens': return PLAYS.filter(function(p){return p.type==='Screen';});
+    case 'eogrz': return PLAYS.filter(function(p){return (p.type==='Pass'||p.type==='PA')&&NOHEAVY(p)&&(p.tags.rz||p.tags.deep);});
+    case 'eoghm': return PLAYS.filter(function(p){return p.type==='Pass'&&/Vertical|\bGO\b|Fade|Seam|Post|Streak/i.test(p.play);});
     case 'shots': return PLAYS.filter(function(p){return (p.type==='Pass'||p.type==='PA')&&p.tags.deep;});
     case 'bb': return PLAYS.filter(function(p){return p.fl.bb&&p.type!=='Run';});
     case 'spec': return PLAYS.filter(function(p){return p.fl.t||SPEC_RE.test(p.play);});
@@ -757,7 +763,11 @@ function buildSection(d,o,gs){
   if(d.groups){
     d.groups.forEach(function(g,gi){
       var pool=poolFor(d,g.k);
-      for(var i=0;i<g.cnt;i++){if(pool.length)take(pool,g.k,gi);}
+      /* a group can ask for a type in each slot, so 4th & short always carries a run, a play-action and a pass */
+      for(var i=0;i<g.cnt;i++){
+        var gl=g.types&&g.types[i]?pool.filter(function(p){return p.type===g.types[i];}):pool;
+        if(pool.length)take(gl.length?gl:pool,g.k,gi);
+      }
     });
   }else{
     var pool=poolFor(d);
@@ -794,7 +804,7 @@ function generate(o,keepOpen,prev){
       }
     }
     /* must calls are the best answers to this defense, picked on their own so they can repeat calls from other boxes */
-    var bs=buildSection(d,o,d.id==='must'?{used:{},names:{}}:gs);out.push(bs);fresh=fresh.concat(bs.calls);
+    var bs=buildSection(d,o,(d.id==='must'||d.id==='d4')?{used:{},names:{}}:gs);out.push(bs);fresh=fresh.concat(bs.calls);
   });
   flavor(fresh,o);
   if(prev){
@@ -839,10 +849,10 @@ function upgrade(s){
     if(!sec){
       /* a sheet saved before the Must call box existed gets it filled once, above 11 personnel */
       /* [box it sits next to, 0 = before it / 1 = after it, the flag that says it was already added once] */
-      var nb={must:['p11',0,'mc'],fringe:['co',1,'fr']}[d.id];
+      var nb={must:['p11',0,'mc'],fringe:['co',1,'fr'],d4:['t710',1,'d4f'],last:['bb',1,'lpf']}[d.id];
       var fill=nb&&!s[nb[2]]&&s.sections.some(function(x){return x.calls.length;}),ugs={used:{},names:{}};
       /* the fringe box avoids repeating calls already on the sheet, must calls may repeat them */
-      if(fill&&d.id!=='must')s.sections.forEach(function(x){x.calls.forEach(function(c){var p=BYKEY[c.f+'|'+c.play];if(p)mark(ugs,p);});});
+      if(fill&&d.id!=='must'&&d.id!=='d4')s.sections.forEach(function(x){x.calls.forEach(function(c){var p=BYKEY[c.f+'|'+c.play];if(p)mark(ugs,p);});});
       var ns=fill?buildSection(d,s.opp||{},ugs):{id:d.id,title:d.title,calls:[]};
       var at=nb?s.sections.map(function(x){return x.id;}).indexOf(nb[0]):-1;
       if(at>=0)s.sections.splice(at+nb[1],0,ns);else s.sections.push(ns);
@@ -852,7 +862,7 @@ function upgrade(s){
       if(d.sits)sec.calls.forEach(function(c,i){if(!c.sit)c.sit=d.sits[i]||'';});
     }
   });
-  s.mc=1;s.fr=1;
+  s.mc=1;s.fr=1;s.d4f=1;s.lpf=1;
 }
 
 /* ---------- state ---------- */
@@ -1024,7 +1034,7 @@ function plan(sec){
     d.groups.forEach(function(g,gi){
       var list=items.filter(function(it){return (it.c.g||0)===gi;});
       if(!list.length)return;
-      out.push({band:g.n,cls:g.cls});sub(list,false);
+      out.push({band:g.n,cls:g.cls});if(d.flat)rows(list);else sub(list,false);
     });
   }else rows(items);
   (sec.ctx||[]).forEach(function(x){
