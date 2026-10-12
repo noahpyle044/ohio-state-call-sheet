@@ -366,6 +366,26 @@ button{cursor:pointer}
 .gbar.g-run{background:#00b050}.gbar.g-pass{background:#0070c0}.gbar.g-3rd{background:#000}.gbar.g-rz{background:#e00000}.gbar.g-clk{background:#7030a0}.gbar.g-spc{background:#404040}
 .cmp .blk .gbar~.bh{font-size:.88em}
 @media print{.cmp .gbar{font-size:10.5px;padding:1px 3px}}
+
+/* sections stretch to fill the height of the page */
+.cmp .cols{align-items:stretch}
+.cmp .col{display:flex;flex-direction:column}
+.cmp .blk{display:flex;flex-direction:column}
+.cmp .rw{flex:1 1 auto;display:flex;flex-direction:column}
+.cmp .rw>.r{flex:1 1 auto}
+@media print{.cmp .cols{min-height:7.15in}}
+
+@media screen{.card.cmp:not(.fs) .cols{zoom:.78}}
+@media print{
+  .cmp .tx b,.cmp .ln b{font-size:6.7px}
+  .cmp .ln .fm{font-size:6.1px}
+  .cmp .pb{font-size:7px}
+  .cmp .bd{font-size:5.6px;min-width:8px;line-height:8px}
+  .cmp .bh{font-size:10px}
+  .cmp .band{font-size:6.2px}
+  .cmp .gbar{font-size:9.5px}
+  .cmp .r{padding:0 2px}
+}
 </style></head><body>
 
 <div class="wrap">
@@ -649,33 +669,33 @@ function scorePlay(p,kind,o){
 /* ---------- sheet sections ---------- */
 var GLFORMS = {'Goalline Normal':1,'Split T Tight':1,'I Form Wing':1,'I Form Y Off Close':1,'Strong Close':1,'Strong Slot':1};
 var NOHEAVY = function(p){return p.pers!=='23'&&p.pers!=='32';};
-var OPEN1 = ['1-10 -25','2-6 -31','1-10 -42','2-8 -50','3-2 +49','1-10 +38','2-4 +34','1-10 +25','2-8 +27','3-3 +21','1-10 +12','1-G +3'];
+var OPEN1 = ['1-10 -25','2-6 -31','1-10 -42','2-8 -50','3-2 +49','1-10 +38','2-4 +34','1-10 +25','2-8 +27','3-3 +21','1-10 +12','1-G +3','2-5 -33','1-10 -49','2-9 +36'];
 var OPEN2 = ['1-10 -25','2-5 -30','1-10 -40','2-7 -48','3-4 +46','1-10 +33'];
 var DEFS = [
   /* front */
-  {id:'open',title:'Openers',kind:'open',n:12,sits:OPEN1,side:'f',col:0,hd:'y',mode:'plain'},
-  {id:'t12',title:'3rd & 1-2',kind:'3short',quota:{Run:5,Pass:2,PA:2},side:'f',col:0,hd:'y',mode:'sit'},
-  {id:'t11',title:'3rd & 11+',kind:'3xl',n:9,side:'f',col:0,hd:'y',mode:'sit'},
-  {id:'p11',title:'11 personnel',kind:'base',pers:['11'],quota:{Run:9,Pass:9,PA:5,RPO:6,Screen:4},cap:3,side:'f',col:1,hd:'lb',mode:'type',star:1},
-  {id:'p12',title:'12 personnel',kind:'base',pers:['12'],quota:{Run:7,Pass:7,PA:4,RPO:4,Screen:1},cap:5,side:'f',col:2,hd:'lg',mode:'type',star:1},
-  {id:'t36',title:'3rd & 3-6',kind:'3med',quota:{Run:1,Pass:5,RPO:1,Screen:1},side:'f',col:2,hd:'y',mode:'sit'},
-  {id:'p10',title:'10 / 01 / 20 personnel',kind:'base',pers:['10','01','20'],quota:{Run:2,Pass:3,Screen:2},cap:4,side:'f',col:2,hd:'te',mode:'type',star:1},
-  {id:'must',title:'Must calls',kind:'must',quota:{Run:2,Pass:2,PA:1,RPO:1},cap:2,side:'f',col:3,hd:'sa',mode:'plain',star:1},
-  {id:'p2b',title:'21 / 22 / heavy',kind:'base',pers:['21','22','23','32'],quota:{Run:8,Pass:3,PA:5},cap:5,side:'f',col:3,hd:'lv',mode:'type',subs:1,star:1},
-  {id:'t710',title:'3rd & 7-10',kind:'3long',n:9,side:'f',col:3,hd:'y',mode:'sit'},
+  {id:'open',title:'Openers',kind:'open',n:13,sits:OPEN1,side:'f',col:0,hd:'y',mode:'plain'},
+  {id:'t12',title:'3rd & 1-2',kind:'3short',quota:{Run:6,Pass:2,PA:2},side:'f',col:0,hd:'y',mode:'sit'},
+  {id:'t11',title:'3rd & 11+',kind:'3xl',n:10,side:'f',col:0,hd:'y',mode:'sit'},
+  {id:'p11',title:'11 personnel',kind:'base',pers:['11'],quota:{Run:10,Pass:10,PA:6,RPO:7,Screen:5},cap:4,side:'f',col:1,hd:'lb',mode:'type',star:1},
+  {id:'p12',title:'12 personnel',kind:'base',pers:['12'],quota:{Run:8,Pass:8,PA:5,RPO:5,Screen:1},cap:6,side:'f',col:2,hd:'lg',mode:'type',star:1},
+  {id:'t36',title:'3rd & 3-6',kind:'3med',quota:{Run:1,Pass:6,RPO:1,Screen:1},side:'f',col:2,hd:'y',mode:'sit'},
+  {id:'p10',title:'10 / 01 / 20 personnel',kind:'base',pers:['10','01','20'],quota:{Run:2,Pass:3,Screen:2},cap:5,side:'f',col:2,hd:'te',mode:'type',star:1},
+  {id:'must',title:'Must calls',kind:'must',quota:{Run:5,Pass:5,PA:2,RPO:2},cap:4,side:'f',col:3,hd:'sa',mode:'plain',star:1},
+  {id:'p2b',title:'21 / 22 / heavy',kind:'base',pers:['21','22','23','32'],quota:{Run:9,Pass:3,PA:6},cap:6,side:'f',col:3,hd:'lv',mode:'type',subs:1,star:1},
+  {id:'t710',title:'3rd & 7-10',kind:'3long',n:10,side:'f',col:3,hd:'y',mode:'sit'},
   /* back */
   {id:'short',title:'Short yardage',kind:'short',quota:{Run:3,Pass:2,PA:1},side:'b',col:0,hd:'pk',mode:'sit'},
-  {id:'gl',title:'Goal line (+4 to +1)',kind:'gl',quota:{Run:5,PA:2,Pass:2},cap:3,side:'b',col:0,hd:'sa',mode:'sit'},
-  {id:'scr',title:'Screens',kind:'screens',n:8,side:'b',col:0,hd:'dk',mode:'sit'},
-  {id:'co',title:'Coming out (-1 to -20)',kind:'comingout',quota:{Run:4,Pass:4,PA:1,RPO:1},side:'b',col:1,hd:'gb',mode:'sit'},
+  {id:'gl',title:'Goal line (+4 to +1)',kind:'gl',quota:{Run:6,PA:2,Pass:2},cap:4,side:'b',col:0,hd:'sa',mode:'sit'},
+  {id:'scr',title:'Screens',kind:'screens',n:9,side:'b',col:0,hd:'dk',mode:'sit'},
+  {id:'co',title:'Coming out (-1 to -20)',kind:'comingout',quota:{Run:5,Pass:5,PA:1,RPO:1},side:'b',col:1,hd:'gb',mode:'sit'},
   {id:'twopt',title:'2 point',kind:'twopt',quota:{Run:2,PA:2,Pass:3},side:'b',col:1,hd:'sa',mode:'sit'},
-  {id:'shot',title:'Shots',kind:'shots',n:10,side:'b',col:1,hd:'dk',mode:'sit'},
+  {id:'shot',title:'Shots',kind:'shots',n:11,side:'b',col:1,hd:'dk',mode:'sit'},
   {id:'hired',title:'Redzone high (+20 to +11)',kind:'highred',quota:{Run:3,PA:1,Pass:2,RPO:1},side:'b',col:2,hd:'sb',mode:'sit'},
-  {id:'min4',title:'4 minute',kind:'min4',groups:[{n:'Run it out',k:'runout',cnt:7,cls:'bl'},{n:'Need a 1st down',k:'first',cnt:5,cls:'bl'}],side:'b',col:2,hd:'lv',mode:'groups'},
-  {id:'spec',title:'Specials',kind:'spec',n:8,side:'b',col:2,hd:'dk',mode:'sit'},
+  {id:'min4',title:'4 minute',kind:'min4',groups:[{n:'Run it out',k:'runout',cnt:8,cls:'bl'},{n:'Need a 1st down',k:'first',cnt:6,cls:'bl'}],side:'b',col:2,hd:'lv',mode:'groups'},
+  {id:'spec',title:'Specials',kind:'spec',n:9,side:'b',col:2,hd:'dk',mode:'sit'},
   {id:'lowred',title:'Redzone low (+10 to +5)',kind:'lowred',quota:{Run:2,PA:1,Pass:2,RPO:1},side:'b',col:3,hd:'sc',mode:'sit'},
-  {id:'min2',title:'2 minute',kind:'min2',groups:[{n:'Need 7',k:'clock7',cnt:9,cls:'or'},{n:'Need 3 / end of half',k:'clock3',cnt:7,cls:'or'}],side:'b',col:3,hd:'or',mode:'groups'},
-  {id:'bb',title:'Blitz beaters',kind:'bb',n:7,side:'b',col:3,hd:'dk',mode:'sit'}
+  {id:'min2',title:'2 minute',kind:'min2',groups:[{n:'Need 7',k:'clock7',cnt:10,cls:'or'},{n:'Need 3 / end of half',k:'clock3',cnt:8,cls:'or'}],side:'b',col:3,hd:'or',mode:'groups'},
+  {id:'bb',title:'Blitz beaters',kind:'bb',n:8,side:'b',col:3,hd:'dk',mode:'sit'}
 ];
 function defOf(id){for(var i=0;i<DEFS.length;i++){if(DEFS[i].id===id)return DEFS[i];}return null;}
 
@@ -1114,7 +1134,7 @@ function cmpCols(s,side){
   return cols.map(function(col){
     var h='',open=-1;
     col.forEach(function(x){
-      if(x.g.i!==open){if(open>=0)h+='</div>';h+='<div class="blk">';open=x.g.i;}
+      if(x.g.i!==open){if(open>=0)h+='</div>';var rn=0;col.forEach(function(y){if(y.g===x.g&&y.l.k==='row')rn+=y.l.w;});h+='<div class="blk" style="flex:'+Math.max(1,Math.round(rn))+' 1 auto">';open=x.g.i;}
       h+=x.l.h;
     });
     if(open>=0)h+='</div>';
@@ -1156,6 +1176,9 @@ function fitFs(){
   var lo=.3,hi=1.15,i;
   for(i=0;i<9;i++){var m=(lo+hi)/2;cols.style.zoom=m;if(c.scrollHeight<=c.clientHeight+1)lo=m;else hi=m;}
   cols.style.zoom=lo;
+  cols.style.minHeight='';
+  var free=c.clientHeight-c.scrollHeight;
+  if(free>8)cols.style.minHeight=((cols.offsetHeight+free-2)*lo)+'px';
 }
 /* real browser full screen (hides the toolbar, gives the X button) with the page-level one as a fallback */
 function fsEl(){return document.fullscreenElement||document.webkitFullscreenElement||null;}
