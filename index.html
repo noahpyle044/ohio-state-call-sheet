@@ -284,7 +284,7 @@ button{cursor:pointer}
   }
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{background:#fff}
-  .top,.foot,.flipbar,.cbtns,.sft,.cacts,.addrow,#viewBook,#viewShift,#viewEdit,#viewHome,#defPanel,.bar,.toast,.modal,.ttl{display:none!important}
+  .top,.foot,.flipbar,.cbtns,.sft,.cacts,.addrow,#viewBook,#viewShift,#viewEdit,#viewHome,#viewLog,#defPanel,.bar,.toast,.modal,.ttl{display:none!important}
   #viewSheet{display:block!important}
   .wrap{max-width:none;padding:0}
   .card,.card.fs{position:static;border:0;padding:0;overflow:visible;border-radius:0}
@@ -308,7 +308,7 @@ button{cursor:pointer}
 
 /* compact: more on screen at once */
 @media screen{
-#viewEdit,#viewBook,#viewShift,#viewHome{zoom:.8}
+#viewEdit,#viewBook,#viewShift,#viewHome,#viewLog{zoom:.8}
 .bar{zoom:.85;padding-block:10px}
 .top{zoom:.85}
 .card:not(.fs){zoom:.8}
@@ -377,8 +377,8 @@ button{cursor:pointer}
 
 @media screen{.card.cmp:not(.fs) .cols{zoom:.78}}
 @media print{
-  .cmp .tx b,.cmp .ln b{font-size:6.7px}
-  .cmp .ln .fm{font-size:6.1px}
+  .cmp .tx b,.cmp .ln b{font-size:6.3px}
+  .cmp .ln .fm{font-size:5.8px}
   .cmp .pb{font-size:7px}
   .cmp .bd{font-size:5.6px;min-width:8px;line-height:8px}
   .cmp .bh{font-size:10px}
@@ -386,6 +386,80 @@ button{cursor:pointer}
   .cmp .gbar{font-size:9.5px}
   .cmp .r{padding:0 2px}
 }
+/* play log */
+.lg{display:grid;gap:12px}
+.lgf{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;padding:12px 14px}
+.lgf label{display:flex;flex-direction:column;gap:2px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.lgf input,.lgf select{font:inherit;font-size:15px;padding:4px 6px;border:1.5px solid #111;border-radius:5px;background:#fff;color:#111;min-width:0}
+.lgf .pl{flex:1 1 280px}.lgf .pl input{width:100%}
+.lgf .n{width:64px}
+.lgst{display:flex;flex-wrap:wrap;gap:8px;padding:10px 14px}
+.lgst div{border:1.5px solid #111;border-radius:5px;padding:4px 12px;background:#fff;text-align:center;min-width:84px}
+.lgst b{display:block;font-size:20px}.lgst span{font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.lgt{width:100%;border-collapse:collapse;font-size:14px}
+.lgt th{background:#111;color:#fff;text-align:left;padding:4px 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.lgt td{padding:4px 8px;border-top:1px solid #bbb;vertical-align:top}
+.lgt tr.pos td{background:#e6f5e6}.lgt tr.neg td{background:#fbe3e3}
+.lgt .x{border:0;background:none;font-size:16px;cursor:pointer;color:#a00}
+.lgtop{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 14px;flex-wrap:wrap}
+.lgtop h2{margin:0;font-size:18px}
+.lgw{overflow-x:auto}
+
+/* live look: marks the best calls for the defense on the field, the sheet itself is not changed */
+.lookbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 10px;margin-top:4px;border:2px solid #111;border-radius:6px;background:#f3f3f3;font-family:var(--font-body)}
+.lookbar .lkt{font-family:var(--font-display);font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.04em}
+.lookbar select{min-height:40px;max-width:100%;border:2px solid #111;border-radius:6px;background:#fff;color:#111;padding:4px 8px;font-size:16px;font-weight:600}
+.lookbar select.on{background:#ffe680}
+.lookbar .lkn{flex:1 1 240px;min-width:0;font-size:14px;line-height:1.3;color:#333}
+.lookbar .lkn i{display:inline-block;width:1em;height:.9em;background:#bdeeb4;border-left:.3em solid #12752e;vertical-align:-.08em;margin-right:.35em}
+@media screen{
+.r.lkb{background:#bdeeb4;box-shadow:inset .35em 0 0 #12752e}
+.r.lkb .rn{color:#333}
+.r.lkx{opacity:.4}
+.rw.open .r.lkb{background:#fff3a6}
+.rw.open .r.lkx{opacity:1}
+}
+.snap .r.lkb{background:none;box-shadow:none}
+.snap .r.lkx{opacity:1}
+/* must call box */
+.mcb{display:inline-block;width:.95em;height:.95em;border:1.5px solid #111;border-radius:2px;margin-right:.4em;vertical-align:-.12em;text-align:center;font-size:.9em;line-height:.85;font-weight:900;background:#fff}
+.mcb.on{background:#111;color:#fff}
+/* game log: worked / did not marks and the defense by down */
+.trk{margin-left:.4em;font-weight:800;white-space:nowrap}
+.trk .h{color:#12752e}
+.trk .m{color:#b80d0d;margin-left:.25em}
+.cacts button.ok{border-color:#12752e;color:#12752e;font-weight:700}
+.cacts button.no{border-color:#b80d0d;color:#b80d0d;font-weight:700}
+.lookbar .lklog{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px;color:#333}
+.lookbar .lklog button{border:2px solid #111;border-radius:6px;background:#fff;color:#111;min-height:38px;padding:4px 12px;font-weight:700;font-size:15px}
+.lookbar .lklog button:disabled{opacity:.4;cursor:default}
+.lookbar .lklog button.gl{background:#ffe680;margin-left:auto}
+.gtab{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:6px}
+.gtab th,.gtab td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.gtab th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#555}
+.gtab button{border:1.5px solid #111;background:#fff;color:#111;border-radius:5px;padding:2px 10px;min-height:34px;font-weight:600;font-size:13px;margin:2px 4px 2px 0}
+.gtab .gh{color:#12752e;font-weight:700}
+.gtab .gm{color:#b80d0d;font-weight:700}
+.panel h4{margin:14px 0 4px;font-size:17px}
+.snap .trk{display:none}
+@media print{.trk{display:none!important}}
+.card.fs .lookbar{zoom:.7}
+@media print{.lookbar{display:none!important}.cmp .r.lkb,.cmp .r.lkx{opacity:1}}
+
+@media screen{
+.r.hot{box-shadow:inset -.35em 0 0 #12752e}.r.hot .ln b::after{content:" \1F525";font-size:.85em}
+.r.cold{opacity:.45}.r.cold .ln b{text-decoration:line-through;text-decoration-thickness:1px}
+.rw.open .r.cold{opacity:1}
+}
+.lookbar .lklog button.qc{background:#bdeeb4;margin-left:auto}.lookbar .lklog button.qc+button.gl{margin-left:0}
+.qcb{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.qcb button{border:2px solid #111;border-radius:6px;background:#fff;color:#111;min-height:46px;padding:4px 16px;font-weight:800;font-size:18px}
+.qcb button.on{background:#111;color:#fff}
+.qcr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:center;border:2px solid #111;border-radius:8px;padding:8px 10px;margin:6px 0;background:#fff}
+.qcr.best{background:#bdeeb4}.qcr.hotr{box-shadow:inset -6px 0 0 #12752e}
+.qcr b{font-size:20px;display:block}.qcr span{font-size:13px;color:#444}
+.qcr .qa{display:flex;gap:6px}.qcr .qa button{min-width:54px;min-height:50px;border:2px solid #111;border-radius:8px;font-size:24px;font-weight:900;background:#fff}
+.qcr .qa .h{color:#12752e;border-color:#12752e}.qcr .qa .m{color:#b80d0d;border-color:#b80d0d}
 </style></head><body>
 
 <div class="wrap">
@@ -400,6 +474,7 @@ button{cursor:pointer}
       <button class="tab" id="tabEdit" data-act="tab" data-tab="edit">Edit</button>
       <button class="tab" id="tabShift" data-act="tab" data-tab="shift">Shift chart</button>
       <button class="tab" id="tabBook" data-act="tab" data-tab="book">Playbook</button>
+      <button class="tab" id="tabLog" data-act="tab" data-tab="log">Play log</button>
     </nav>
   </header>
 
@@ -447,6 +522,7 @@ button{cursor:pointer}
 
   <section id="viewShift" hidden><div id="shiftBody"></div></section>
   <section id="viewBook" hidden><div id="bookBody"></div></section>
+  <section id="viewLog" hidden><div id="logBody"></div></section>
 
   <footer class="foot">
     <p>Plays come from the Ohio State playbook only. Run, pass, PA and RPO labels, concepts, and the F/B, C, BB, T and › tags are first guesses worked out from the play names. Tap a play in the Playbook tab to fix them. Tap ★ on a call to mark your own off-script picks.</p>
@@ -611,7 +687,7 @@ function pbPrefill(name){
 }
 
 /* ---------- scoring ---------- */
-var KALIAS={must:'base',short:'3short',highred:'rz',twopt:'rz','3xl':'3xl',first:'3med',clock7:'clock',clock3:'clock',min4:'3med',min2:'clock'};
+var KALIAS={must:'base',short:'3short',highred:'rz',fringe:'base',twopt:'rz','3xl':'3xl',first:'3med',clock7:'clock',clock3:'clock',min4:'3med',min2:'clock'};
 function scorePlay(p,kind,o){
   kind=KALIAS[kind]||kind;
   var t=p.type,c=p.tags,run=t==='Run',ins=run&&!p.outside,out=run&&p.outside,pass=!run,s=0;
@@ -667,21 +743,41 @@ function scorePlay(p,kind,o){
 }
 
 /* ---------- sheet sections ---------- */
+/* ---------- live look ---------- */
+/* what the defense is in right now. It only marks calls already on the sheet, it never changes them. */
+var LCOV=[['','Any coverage'],['c0','Cover 0'],['c1','Cover 1 (man)'],['c2m','Cover 2 Man'],['c2','Cover 2'],['c3','Cover 3'],['c4','Cover 4'],['c6','Cover 6'],['three','Three-high']];
+var LPRESS=[['','Any pressure'],['heavy','Blitz'],['drops8','Drops 8'],['none','No blitz']];
+var LBOX=[['','Any box'],['light','Light box'],['heavy','Heavy box']];
+function inList(list,v){return list.some(function(a){return a[0]===v;})?v:'';}
+function lookOn(){var l=ui.look;return !!(l.cov||l.press||l.box);}
+/* per call in a box: 'b' best fit, 'x' poor fit, '' neither. Best is the top group in that box, so every box shows where to go first. */
+function lookMarks(sec){
+  /* route tags come from play names, so a run like Read Option would score as a man beater. Runs are judged as runs only here. */
+  var o=ui.look,v=sec.calls.map(function(c){
+    var p=BYKEY[c.f+'|'+c.play];if(!p)return 0;
+    return scorePlay(p.type==='Run'?{type:p.type,outside:p.outside,play:p.play,tags:{}}:p,'',o);
+  });
+  var mx=Math.max.apply(null,v.concat([0]));
+  return v.map(function(x){return (x>=1-1e-9&&x>=mx-.5-1e-9)?'b':(x<=-.5+1e-9?'x':'');});
+}
+
+var lkC={};function lkm(sec){var k=sec.id+'|'+sec.calls.length;if(!lkC[k])lkC[k]=lookMarks(sec);return lkC[k];}
 var GLFORMS = {'Goalline Normal':1,'Split T Tight':1,'I Form Wing':1,'I Form Y Off Close':1,'Strong Close':1,'Strong Slot':1};
 var NOHEAVY = function(p){return p.pers!=='23'&&p.pers!=='32';};
 var OPEN1 = ['1-10 -25','2-6 -31','1-10 -42','2-8 -50','3-2 +49','1-10 +38','2-4 +34','1-10 +25','2-8 +27','3-3 +21','1-10 +12','1-G +3','2-5 -33','1-10 -49','2-9 +36'];
 var OPEN2 = ['1-10 -25','2-5 -30','1-10 -40','2-7 -48','3-4 +46','1-10 +33'];
 var DEFS = [
   /* front */
-  {id:'open',title:'Openers',kind:'open',n:13,sits:OPEN1,side:'f',col:0,hd:'y',mode:'plain'},
+  {id:'open',title:'Openers',kind:'open',n:14,sits:OPEN1,side:'f',col:0,hd:'y',mode:'plain'},
+  {id:'open2',title:'Opening 2nd half',kind:'open',n:6,rev:1,sits:OPEN2,side:'f',col:0,hd:'y',mode:'plain'},
   {id:'t12',title:'3rd & 1-2',kind:'3short',quota:{Run:6,Pass:2,PA:2},side:'f',col:0,hd:'y',mode:'sit'},
   {id:'t11',title:'3rd & 11+',kind:'3xl',n:10,side:'f',col:0,hd:'y',mode:'sit'},
-  {id:'p11',title:'11 personnel',kind:'base',pers:['11'],quota:{Run:10,Pass:10,PA:6,RPO:7,Screen:5},cap:4,side:'f',col:1,hd:'lb',mode:'type',star:1},
-  {id:'p12',title:'12 personnel',kind:'base',pers:['12'],quota:{Run:8,Pass:8,PA:5,RPO:5,Screen:1},cap:6,side:'f',col:2,hd:'lg',mode:'type',star:1},
+  {id:'p11',title:'11 personnel',kind:'base',pers:['11'],quota:{Run:11,Pass:11,PA:6,RPO:7,Screen:5},cap:4,side:'f',col:1,hd:'lb',mode:'type',star:1},
+  {id:'p12',title:'12 personnel',kind:'base',pers:['12'],quota:{Run:9,Pass:9,PA:5,RPO:5,Screen:1},cap:6,side:'f',col:2,hd:'lg',mode:'type',star:1},
   {id:'t36',title:'3rd & 3-6',kind:'3med',quota:{Run:1,Pass:6,RPO:1,Screen:1},side:'f',col:2,hd:'y',mode:'sit'},
   {id:'p10',title:'10 / 01 / 20 personnel',kind:'base',pers:['10','01','20'],quota:{Run:2,Pass:3,Screen:2},cap:5,side:'f',col:2,hd:'te',mode:'type',star:1},
-  {id:'must',title:'Must calls',kind:'must',quota:{Run:5,Pass:5,PA:2,RPO:2},cap:4,side:'f',col:3,hd:'sa',mode:'plain',star:1},
-  {id:'p2b',title:'21 / 22 / heavy',kind:'base',pers:['21','22','23','32'],quota:{Run:9,Pass:3,PA:6},cap:6,side:'f',col:3,hd:'lv',mode:'type',subs:1,star:1},
+  {id:'must',title:'Must calls',kind:'must',quota:{Run:6,Pass:6,PA:2,RPO:2},cap:4,side:'f',col:3,hd:'sa',mode:'plain',star:1},
+  {id:'p2b',title:'21 / 22 / heavy',kind:'base',pers:['21','22','23','32'],quota:{Run:10,Pass:4,PA:6},cap:6,side:'f',col:3,hd:'lv',mode:'type',subs:1,star:1},
   {id:'t710',title:'3rd & 7-10',kind:'3long',n:10,side:'f',col:3,hd:'y',mode:'sit'},
   /* back */
   {id:'short',title:'Short yardage',kind:'short',quota:{Run:3,Pass:2,PA:1},side:'b',col:0,hd:'pk',mode:'sit'},
@@ -690,6 +786,7 @@ var DEFS = [
   {id:'co',title:'Coming out (-1 to -20)',kind:'comingout',quota:{Run:5,Pass:5,PA:1,RPO:1},side:'b',col:1,hd:'gb',mode:'sit'},
   {id:'twopt',title:'2 point',kind:'twopt',quota:{Run:2,PA:2,Pass:3},side:'b',col:1,hd:'sa',mode:'sit'},
   {id:'shot',title:'Shots',kind:'shots',n:11,side:'b',col:1,hd:'dk',mode:'sit'},
+  {id:'fringe',title:'Fringe (+35 to +21)',kind:'fringe',quota:{Run:2,Pass:3,PA:1},cap:3,side:'b',col:2,hd:'sb',mode:'sit'},
   {id:'hired',title:'Redzone high (+20 to +11)',kind:'highred',quota:{Run:3,PA:1,Pass:2,RPO:1},side:'b',col:2,hd:'sb',mode:'sit'},
   {id:'min4',title:'4 minute',kind:'min4',groups:[{n:'Run it out',k:'runout',cnt:8,cls:'bl'},{n:'Need a 1st down',k:'first',cnt:6,cls:'bl'}],side:'b',col:2,hd:'lv',mode:'groups'},
   {id:'spec',title:'Specials',kind:'spec',n:9,side:'b',col:2,hd:'dk',mode:'sit'},
@@ -707,6 +804,7 @@ function poolFor(d,kind){
     case 'base': return PLAYS.filter(function(p){return d.pers.indexOf(p.pers)>=0;});
     case 'gl': return PLAYS.filter(function(p){return GLFORMS[p.f]||/Goalline/i.test(p.play);});
     case 'short': return PLAYS.slice();
+    case 'fringe': return PLAYS.filter(function(p){return p.pers!=='23'&&NOHEAVY(p);});
     case 'rz': case 'highred': case 'lowred': case 'twopt': return PLAYS.filter(function(p){return p.f!=='Goalline Normal'&&NOHEAVY(p);});
     case 'clock': case 'clock7': case 'clock3': return PLAYS.filter(function(p){return p.type!=='Run'&&p.type!=='RPO'&&NOHEAVY(p);});
     case 'runout': return PLAYS.filter(function(p){return p.type==='Run'&&NOHEAVY(p);});
@@ -831,13 +929,12 @@ function upgrade(s){
     s.sections=(had?generate(s.opp||{},false,null):blankSections()).concat(cust);
     s.v=3;
   }
-  s.sections=s.sections.filter(function(x){return x.id!=='open2';});
   var gs={used:{},names:{}};
   s.sections.forEach(function(x){x.calls.forEach(function(c){var p=BYKEY[c.f+'|'+c.play];if(p)mark(gs,p);});});
   var hadCalls=s.sections.some(function(x){return x.calls.length;});
   DEFS.forEach(function(d){
     var sec=s.sections.filter(function(x){return x.id===d.id;})[0];
-    if(!sec)s.sections.push(d.id==='must'&&hadCalls?buildSection(d,s.opp||{},gs):{id:d.id,title:d.title,calls:[]});
+    if(!sec)s.sections.push((d.id==='must'||d.id==='fringe'||d.id==='open2')&&hadCalls?buildSection(d,s.opp||{},gs):{id:d.id,title:d.title,calls:[]});
     else{
       sec.title=d.title;delete sec.sub;
       if(d.sits)sec.calls.forEach(function(c,i){if(!c.sit)c.sit=d.sits[i]||'';});
@@ -851,6 +948,7 @@ sheets.forEach(function(s){s.sections.forEach(function(sec){sec.calls=(sec.calls
 var activeId = store.get('csl.active',null);
 var ui = {style:store.get('csl.style','sheet'),tab:'sheet',side:'f',fs:false,sel:null,pend:null,target:null,tctx:'d',q:'',form:'',pers:'',type:'',concept:'',pi:null,fp:null,shiftFocus:null};
 function sheet(){return sheets.filter(function(s){return s.id===activeId;})[0]||null;}
+(function(){var l=store.get('csl.look',null)||{};ui.look={cov:inList(LCOV,l.cov||''),press:inList(LPRESS,l.press||''),box:inList(LBOX,l.box||'')};ui.lkN={f:0,b:0};})();
 function save(){store.set('csl.sheets',sheets);store.set('csl.active',activeId);}
 function addSheet(name,o,sections){
   var s={id:uid(),name:name,opp:o,sections:sections,v:3};
@@ -922,7 +1020,7 @@ function printSheet(){
   var css=Array.prototype.map.call(document.querySelectorAll('style'),function(s){return s.textContent;}).join('\n');
   var links=Array.prototype.map.call(document.querySelectorAll('link[rel=stylesheet]'),function(l){return l.outerHTML;}).join('');
   var clone=card.cloneNode(true);
-  Array.prototype.forEach.call(clone.querySelectorAll('.ttl,.chead,.flipbar,.addrow,.sft,.cacts'),function(x){x.parentNode.removeChild(x);});
+  Array.prototype.forEach.call(clone.querySelectorAll('.ttl,.chead,.flipbar,.lookbar,.addrow,.sft,.cacts,.trk'),function(x){x.parentNode.removeChild(x);});
   clone.className='card'+(card.classList.contains('cmp')?' cmp':'');
   var pgs=clone.querySelectorAll('.pg');
   if(pgs[0])pgs[0].setAttribute('data-s','f');
@@ -1035,15 +1133,20 @@ function legendHtml(){
     '<span><i>−/+</i> Own/opp yard line</span><span><i>F / B</i> Field / boundary side</span>'+
     '<span><span class="bd c">C</span> Constraint</span><span><span class="bd bb">BB</span> Blitz beater</span><span><span class="bd t">T</span> Trick</span>';
 }
+function heat(tk){if(!tk)return '';if(tk[1]>=2&&tk[1]>tk[0])return ' cold';if(tk[0]>=2&&tk[0]>tk[1])return ' hot';return '';}
 function rowHtml(sec,L,it,num,edit){
   var p=it.p,c=it.c,hs=!!c.sit;
   var a=' data-sec="'+sec.id+'" data-i="'+it.i+'"';
   var sel=ui.sel&&ui.sel.sec===sec.id&&ui.sel.i===it.i;
-  var acts='<div class="cacts"><button class="swap" data-act="swap"'+a+'>Swap</button><button data-act="reroll"'+a+'>Re-roll</button><button data-act="moveTo"'+a+'>Move to…</button><button data-act="chgShift"'+a+'>Change shift</button><button data-act="noShift"'+a+'>No shift</button><button data-act="star"'+a+'>'+(c.st?'Remove ★':'Mark ★')+'</button>'+(L.sit?'<button data-act="sit"'+a+'>Situation</button>':'')+'<button data-act="up"'+a+'>Up</button><button data-act="down"'+a+'>Down</button><button class="danger" data-act="remove"'+a+'>Remove</button></div>';
-  return '<div class="rw'+(sel?' open':'')+'"'+a+'><div class="r'+(hs?' hs':'')+(c.st?' stc':'')+'">'+
+  var s0=sheet(),tk=s0&&s0.trk?s0.trk[p.key]:null,mk=lookOn()?lkm(sec)[it.i]:'';
+  if(mk==='b')ui.lkN[L.side]++;
+  var trk=tk?'<span class="trk" title="'+(heat(tk)===' hot'?'Hot: working this game':heat(tk)===' cold'?'Cold: not working this game':'Worked / did not this game')+'">'+(tk[0]?'<span class="h">'+tk[0]+'✓</span>':'')+(tk[1]?'<span class="m">'+tk[1]+'✗</span>':'')+'</span>':'';
+  var mcb=sec.id==='must'?'<span class="mcb'+(tk?' on':'')+'" title="'+(tk?'Called':'Not called yet')+'">'+(tk?'✓':'')+'</span>':'';
+  var acts='<div class="cacts"><button class="ok" data-act="hit"'+a+'>✓ Worked</button><button class="no" data-act="miss"'+a+'>✗ Did not</button>'+(tk?'<button data-act="trkClear"'+a+'>Clear marks</button>':'')+'<button class="swap" data-act="swap"'+a+'>Swap</button><button data-act="reroll"'+a+'>Re-roll</button><button data-act="moveTo"'+a+'>Move to…</button><button data-act="chgShift"'+a+'>Change shift</button><button data-act="noShift"'+a+'>No shift</button><button data-act="star"'+a+'>'+(c.st?'Remove ★':'Mark ★')+'</button>'+(L.sit?'<button data-act="sit"'+a+'>Situation</button>':'')+'<button data-act="up"'+a+'>Up</button><button data-act="down"'+a+'>Down</button><button class="danger" data-act="remove"'+a+'>Remove</button></div>';
+  return '<div class="rw'+(sel?' open':'')+'"'+a+'><div class="r'+(hs?' hs':'')+(c.st?' stc':'')+heat(tk)+(mk==='b'?' lkb':(mk==='x'?' lkx':''))+'"'+(mk?' title="'+(mk==='b'?'Best fit':'Poor fit')+' for the live look"':'')+'>'+
     (hs?'<span class="sdn">'+esc(c.sit)+'</span>':'<span class="rn">'+num+'</span>')+
     '<span class="pb p'+p.pers+'">'+p.pers+'</span><span class="ty">'+tl(p)+'</span>'+
-    '<span class="ln"><span class="fm">'+esc(c.f)+(c.sh?' <i>›</i> '+esc(c.sh):'')+'</span> <b>'+esc(c.play)+'</b>'+badges(p,c)+'</span></div>'+acts+'</div>';
+    '<span class="ln">'+mcb+'<span class="fm">'+esc(c.f)+(c.sh?' <i>›</i> '+esc(c.sh):'')+'</span> <b>'+esc(c.play)+'</b>'+badges(p,c)+trk+'</span></div>'+acts+'</div>';
 }
 function blkHtml(sec,start,edit){
   var L=lay(sec),n=start,out='';
@@ -1057,8 +1160,8 @@ function blkHtml(sec,start,edit){
 }
 
 /* ---------- spreadsheet layout: big group bars (RUN GAME, PASS GAME, 3RD DOWN ...) flowed into 4 columns ---------- */
-var CMP_F=[{t:'sec',id:'open'},{t:'sec',id:'must'},{t:'run',bar:'RUN GAME',cls:'g-run'},{t:'pass',bar:'PASS GAME',cls:'g-pass'},{t:'grp',bar:'3RD DOWN',cls:'g-3rd',ids:['t12','t36','t710','t11']}];
-var CMP_B=[{t:'sec',id:'short'},{t:'sec',id:'co'},{t:'sec',id:'twopt'},{t:'grp',bar:'REDZONE',cls:'g-rz',ids:['hired','lowred','gl']},{t:'grp',bar:'CLOCK',cls:'g-clk',ids:['min2','min4']},{t:'grp',bar:'SPECIAL PLAYS',cls:'g-spc',ids:['scr','shot','spec','bb']}];
+var CMP_F=[{t:'sec',id:'open'},{t:'sec',id:'open2'},{t:'sec',id:'must'},{t:'run',bar:'RUN GAME',cls:'g-run'},{t:'pass',bar:'PASS GAME',cls:'g-pass'},{t:'grp',bar:'3RD DOWN',cls:'g-3rd',ids:['t12','t36','t710','t11']}];
+var CMP_B=[{t:'sec',id:'short'},{t:'sec',id:'co'},{t:'sec',id:'twopt'},{t:'grp',bar:'REDZONE',cls:'g-rz',ids:['fringe','hired','lowred','gl']},{t:'grp',bar:'CLOCK',cls:'g-clk',ids:['min2','min4']},{t:'grp',bar:'SPECIAL PLAYS',cls:'g-spc',ids:['scr','shot','spec','bb']}];
 function cmpSec(s,id){return s.sections.filter(function(x){return x.id===id;})[0]||null;}
 function rowW(it){var n=(it.c.f+' '+it.c.play).length;return n>50?2.1:1.2;}
 function cmpSecLines(sec,withHead){
@@ -1149,12 +1252,30 @@ function layoutOf(s){
 function renderSheet(){
   if(ui.tab==='edit')renderEdit();else if(ui.tab==='sheet')drawSheet();
 }
+function lookSel(k,list){
+  var v=ui.look[k];
+  return '<select data-look="'+k+'" aria-label="'+esc(list[0][1].replace('Any ',''))+'"'+(v?' class="on"':'')+'>'+list.map(function(a){return opt(a[0],a[1],a[0]===v);}).join('')+'</select>';
+}
+var DOWN={1:'1st',2:'2nd',3:'3rd',4:'4th'};
+function lookName(o){var b=[];if(o.cov)b.push(lbl(LCOV,o.cov));if(o.press)b.push(lbl(LPRESS,o.press));if(o.box)b.push(lbl(LBOX,o.box));return b.join(' · ');}
+function lookHtml(){
+  var s=sheet(),on=lookOn(),n=ui.lkN[ui.side],note;
+  if(!on)note='Pick what the defense is in right now. The best calls in each box turn green and nothing on your sheet changes.';
+  else if(n)note='<i></i>Best fit in each box, '+n+' on this side. Faded calls are a poor fit. Your sheet is not changed.';
+  else note='No call on this side stands out for this look. Faded calls are a poor fit. Your sheet is not changed.';
+  var logged=(s.dlog||[]).length+Object.keys(s.trk||{}).length;
+  return '<div class="lookbar"><span class="lkt">Live look</span>'+lookSel('cov',LCOV)+lookSel('press',LPRESS)+lookSel('box',LBOX)+
+    (on?'<button class="bk" data-act="lookClear">Clear</button>':'')+'<span class="lkn">'+note+'</span>'+
+    '<div class="lklog"><span>Log this look on</span>'+[1,2,3,4].map(function(dn){return '<button data-act="dlog" data-d="'+dn+'"'+(on?'':' disabled')+'>'+DOWN[dn]+'</button>';}).join('')+
+    '<button class="qc" data-act="qc">Quick call</button><button class="gl" data-act="glog">Game log'+(logged?' ('+logged+')':'')+'</button></div></div>';
+}
 function drawSheet(){
   renderSelect();
   var s=sheet(),el=$('#sheetBody');
   if(!s){el.innerHTML='<p class="empty">No sheets yet. Tap Generate sheet to start.</p>';return;}
   ensureTarget();
   var edit=false,lo=layoutOf(s),n=1,pg={};
+  ui.lkN={f:0,b:0};lkC={};
   ['f','b'].forEach(function(sd){
     if(ui.style==='sheet'){pg[sd]=cmpCols(s,sd);return;}
     pg[sd]=lo[sd].map(function(col){
@@ -1165,6 +1286,7 @@ function drawSheet(){
   el.innerHTML='<div class="card'+(ui.fs?' fs':'')+(edit?' edit':'')+(ui.style==='sheet'?' cmp':'')+'" id="card">'+
     '<div class="ttl"><div class="l"><span class="app">Call Sheet Builder</span><span class="sn">'+esc(s.name)+'</span></div><div class="cbtns"><button class="bk" data-act="style">'+(ui.style==='sheet'?'Layout: Spreadsheet':'Layout: Standard')+'</button><button class="by" data-act="adj">Adjust defense</button><button class="bk" data-act="fs">'+(ui.fs?'Exit full screen':'Full screen')+'</button></div></div>'+
     '<div class="flipbar"><div class="seg"><button class="'+(ui.side==='f'?'on':'')+'" data-act="side" data-side="f">FRONT</button><button class="'+(ui.side==='b'?'on':'')+'" data-act="side" data-side="b">BACK</button></div><button class="by" data-act="flip">Flip ↻</button><div class="legend">'+legendHtml()+'</div></div>'+
+    lookHtml()+
     '<div class="pages"><div class="pg'+(ui.side==='f'?'':' off')+'">'+title('f')+'<div class="cols">'+pg.f+'</div></div><div class="pg'+(ui.side==='b'?'':' off')+'">'+title('b')+'<div class="cols">'+pg.b+'</div></div></div>'+
     (edit?'':'')+'</div>';
   if(ui.fs)fitFs();
@@ -1224,6 +1346,7 @@ function purposeOf(p){
   return 'Dropback concept';
 }
 var CTXI={
+  open2:['Second half','Your scripted first drive of the second half. Run, pass and play-action in a set order.'],
   open:['Drive','Your scripted first drive. A mix of run, quick game and play-action.'],
   must:['Must call','Your go-to plays. Call these no matter what.'],
   t12:['Short to go','Convert with a short run or a quick throw.'],
@@ -1234,7 +1357,7 @@ var CTXI={
   p2b:['Two backs and heavy','21, 22, 23 and 32 personnel.'],p10:['Spread sets','10, 01 and 20 personnel.'],
   short:['Short yardage','One yard to get.'],gl:['Goal line','Inside the 5.'],scr:['Screens','Answers to pressure.'],
   co:['Coming out','Backed up near your own end zone.'],twopt:['Two-point tries','From the 2.'],shot:['Shot plays','Deep tries and play-action.'],
-  hired:['High red zone','Plus 20 to plus 11.'],spec:['Specials','Tricks and gadgets.'],lowred:['Low red zone','Plus 10 to plus 5.'],bb:['Blitz beaters','Quick answers to pressure.']
+  fringe:['Fringe range','Plus 35 to plus 21. Chunk plays and runs that keep you in field goal range.'],hired:['High red zone','Plus 20 to plus 11.'],spec:['Specials','Tricks and gadgets.'],lowred:['Low red zone','Plus 10 to plus 5.'],bb:['Blitz beaters','Quick answers to pressure.']
 };
 function ctxList(sec){
   var d=defOf(sec.id),out=[];
@@ -1451,6 +1574,126 @@ function formPick(title,text,from,onPick){
   $('#fpClose').onclick=closeModal;
 }
 
+
+/* ---------- play log ---------- */
+var plog = store.get('csl.log',[])||[];
+var LOGRES=['','TD','Inc','Sack','INT','Fumble','Penalty','Punt','FG','Turnover on downs'];
+function logSave(){store.set('csl.log',plog);}
+function renderLog(){
+  var n=plog.length,wkc=0,nwc=0,yd=0,suc=0,exp=0,tov=0;
+  plog.forEach(function(e){var y=+e.yds||0;yd+=y;if(e.wk===1)wkc++;if(e.wk===2)nwc++;var need=e.dn==1?.4*e.dist:e.dn==2?.6*e.dist:e.dist;if(y>=need&&e.res!=='Inc'&&e.res!=='INT'&&e.res!=='Sack'&&e.res!=='Fumble')suc++;if(y>=15)exp++;if(e.res==='INT'||e.res==='Fumble')tov++;});
+  var by={};plog.forEach(function(e){var k=e.f+' — '+e.play;(by[k]=by[k]||{c:0,y:0,s:0}).c++;by[k].y+=(+e.yds||0);});
+  var top=Object.keys(by).sort(function(a,b){return by[b].c-by[a].c;}).slice(0,5);
+  var dl='<datalist id="lgPlays">'+PLAYS.map(function(p){return '<option value="'+esc(p.f+' — '+p.play)+'">';}).join('')+'</datalist>';
+  var form='<form class="cardx lgf" id="lgForm">'+
+   '<label>Qtr<select name="q"><option>1</option><option>2</option><option>3</option><option>4</option><option>OT</option></select></label>'+
+   '<label>Down<select name="dn"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>'+
+   '<label>Dist<input class="n" name="dist" type="number" min="1" max="99" value="10"></label>'+
+   '<label>Spot<input class="n" name="spot" type="number" min="-50" max="50" placeholder="-25"></label>'+
+   '<label class="pl">Play<input name="play" list="lgPlays" placeholder="Search formation or play" autocomplete="off" required></label>'+
+   '<label>Yards<input class="n" name="yds" type="number" placeholder="0"></label>'+
+   '<label>Worked?<select name="wk"><option value="">–</option><option value="1">✓ Worked</option><option value="2">✗ Didn\'t work</option></select></label>'+
+   '<label>Result<select name="res">'+LOGRES.map(function(r){return '<option>'+r+'</option>';}).join('')+'</select></label>'+
+   '<label>Note<input name="note" placeholder="e.g. Cover 3, blitz"></label>'+
+   '<button class="pri" type="submit">Log play</button></form>';
+  var stats='<div class="cardx lgst"><div><b>'+n+'</b><span>Plays</span></div><div><b>'+yd+'</b><span>Yards</span></div><div><b>'+(n?(yd/n).toFixed(1):'0.0')+'</b><span>Yds / play</span></div><div><b>'+(n?Math.round(100*suc/n):0)+'%</b><span>Success</span></div><div><b style="color:#0a8a0a">'+wkc+' ✓</b><span>Worked</span></div><div><b style="color:#d00000">'+nwc+' ✗</b><span>Didn\'t work</span></div><div><b>'+exp+'</b><span>15+ plays</span></div><div><b>'+tov+'</b><span>Turnovers</span></div>'+
+    (top.length?'<div style="text-align:left;flex:1 1 240px"><span>Most called</span><br>'+top.map(function(k){return esc(k.split(' — ')[1])+' ×'+by[k].c+' ('+(by[k].y/by[k].c).toFixed(1)+')';}).join(' · ')+'</div>':'')+'</div>';
+  var rows=plog.slice().reverse().map(function(e,i){var idx=plog.length-1-i,y=+e.yds||0;
+    return '<tr class="'+(e.wk===1||e.res==='TD'||(!e.wk&&y>=8)?'pos':e.wk===2?'neg':(e.res==='INT'||e.res==='Fumble'||e.res==='Sack'||y<0?'neg':''))+'"><td>'+(idx+1)+'</td><td>Q'+esc(e.q)+'</td><td>'+e.dn+' &amp; '+e.dist+'</td><td>'+(e.spot===''||e.spot==null?'':(e.spot>0?'+':'')+e.spot)+'</td><td><b>'+esc(e.play)+'</b><br><small>'+esc(e.f)+'</small></td><td>'+y+'</td><td>'+(e.wk===1?'<b style="color:#0a8a0a">✓</b> ':e.wk===2?'<b style="color:#d00000">✗</b> ':'')+esc(e.res||'')+'</td><td>'+esc(e.note||'')+'</td><td><button class="x" data-lgdel="'+idx+'" aria-label="Delete">×</button></td></tr>';}).join('');
+  var tbl='<div class="cardx"><div class="lgtop"><h2>Play log</h2><span><button id="lgCopy">Copy log</button> <button id="lgClear">Clear log</button></span></div><div class="lgw">'+
+    (n?'<table class="lgt"><thead><tr><th>#</th><th>Qtr</th><th>D&amp;D</th><th>Spot</th><th>Play</th><th>Yds</th><th>Result</th><th>Note</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>':'<p style="padding:6px 14px 14px;margin:0">No plays logged yet. Log each call as you go and the stats above will fill in.</p>')+'</div></div>';
+  var h=$('#logBody');h.innerHTML='<div class="lg">'+dl+form+stats+tbl+'</div>';
+  var f=$('#lgForm'),last=plog[plog.length-1];
+  if(last){f.q.value=last.q;var nd=last.dn<4&&(+last.yds||0)<last.dist?last.dn+1:1;f.dn.value=nd;var nl=nd===1?10:Math.max(1,last.dist-(+last.yds||0));f.dist.value=nl;if(last.spot!==''&&last.spot!=null){var sp=+last.spot+(+last.yds||0);if(sp>=-49&&sp<=49)f.spot.value=sp;}}
+  f.onsubmit=function(ev){ev.preventDefault();
+    var raw=f.play.value,parts=raw.split(' — '),pf=parts.length>1?parts[0]:'',pp=parts.length>1?parts.slice(1).join(' — '):raw;
+    plog.push({q:f.q.value,dn:+f.dn.value,dist:+f.dist.value||10,spot:f.spot.value===''?'':+f.spot.value,f:pf,play:pp,yds:f.yds.value===''?0:+f.yds.value,res:f.res.value,note:f.note.value,wk:+f.wk.value||0});
+    var ss=sheet();if(+f.wk.value&&ss&&BYKEY[pf+'|'+pp]){ss.trk=ss.trk||{};var kk=pf+'|'+pp,tv=ss.trk[kk]||[0,0];tv[+f.wk.value===1?0:1]++;ss.trk[kk]=tv;save();}
+    logSave();renderLog();var p=$('#lgForm').play;if(p)p.focus();};
+  h.onclick=function(ev){var b=ev.target.closest&&ev.target.closest('[data-lgdel]');if(b){plog.splice(+b.getAttribute('data-lgdel'),1);logSave();renderLog();return;}
+    if(ev.target.id==='lgClear'&&plog.length&&confirm('Clear the whole play log?')){plog=[];logSave();renderLog();}
+    if(ev.target.id==='lgCopy'){var txt=plog.map(function(e,i){return (i+1)+'. Q'+e.q+' '+e.dn+'&'+e.dist+(e.spot===''?'':' @'+e.spot)+' '+e.play+' ('+e.f+') '+e.yds+' yds'+(e.res?' '+e.res:'')+(e.note?' - '+e.note:'');}).join('\n');
+      try{navigator.clipboard.writeText(txt);ev.target.textContent='Copied';}catch(x){ev.target.textContent='Copy blocked';}}};
+}
+
+
+/* ---------- quick call: big-button view for the current down and distance ---------- */
+var QCD={S:'1-2 to go',M:'3-6 to go',L:'7-10 to go',X:'11+ to go'};
+ui.qc={dn:1,d:'L'};
+function qcCalls(){
+  var s=sheet();if(!s)return [];
+  var dn=ui.qc.dn,d=ui.qc.d,ids=[];
+  if(dn<=2&&d!=='S'&&d!=='X')ids=['p11','p12','p10','p2b'];
+  else if(dn<=2&&d==='S')ids=['t12','p11','p12','p2b'];
+  else if(dn<=2)ids=['t710','t11','p11'];
+  else ids={S:['t12','short'],M:['t36'],L:['t710'],X:['t11']}[d];
+  ids=ids.concat(['must']);
+  var seen={},out=[];
+  s.sections.forEach(function(sec){if(ids.indexOf(sec.id)<0)return;
+    sec.calls.forEach(function(c){var p=BYKEY[c.f+'|'+c.play];if(!p||seen[p.key])return;seen[p.key]=1;
+      var tk=s.trk&&s.trk[p.key],h=heat(tk),o=ui.look,sc=0;
+      if(lookOn())sc=scorePlay(p.type==='Run'?{type:p.type,outside:p.outside,play:p.play,tags:{}}:p,'',o);
+      sc+=(h===' hot'?1.2:0)-(h===' cold'?2:0)+(c.st?.3:0)+(sec.id==='must'?.1:0);
+      out.push({c:c,p:p,tk:tk,h:h,sc:sc,sec:sec});});});
+  out.sort(function(a,b){return b.sc-a.sc;});
+  return out.slice(0,6);
+}
+function openQuick(){
+  var l=qcCalls(),dn=ui.qc.dn,d=ui.qc.d;
+  var h='<h3>Quick call</h3><p>Pick the down and distance. These are the best calls on your sheet for it'+(lookOn()?', ranked for the live look ('+esc(lookName(ui.look))+')':'. Set a live look to rank them for the defense')+'. Hot calls are working, cold ones are not.</p>';
+  h+='<div class="qcb">'+[1,2,3,4].map(function(n){return '<button data-act="qcset" data-dn="'+n+'" class="'+(n===dn?'on':'')+'">'+DOWN[n]+'</button>';}).join('')+'</div>';
+  h+='<div class="qcb">'+Object.keys(QCD).map(function(k){return '<button data-act="qcset" data-d="'+k+'" class="'+(k===d?'on':'')+'">'+QCD[k]+'</button>';}).join('')+'</div>';
+  if(!l.length)h+='<p>No calls on your sheet for this down and distance.</p>';
+  l.forEach(function(x,i){
+    h+='<div class="qcr'+(i===0?' best':'')+(x.h===' hot'?' hotr':'')+'"><div><b>'+esc(x.c.play)+'</b><span>'+esc(x.c.f)+(x.c.sh?' › '+esc(x.c.sh):'')+' · '+esc(x.sec.title)+(x.tk?' · '+x.tk[0]+'✓ '+x.tk[1]+'✗':'')+'</span></div>'+
+      '<div class="qa"><button class="h" data-act="qhit" data-k="'+esc(x.p.key)+'" aria-label="Worked">✓</button><button class="m" data-act="qmiss" data-k="'+esc(x.p.key)+'" aria-label="Did not work">✗</button></div></div>';
+  });
+  h+='<div class="mact"><button class="primary" id="qClose">Close</button></div>';
+  openModal(h,true);$('#qClose').onclick=closeModal;
+}
+
+/* ---------- game log ---------- */
+function openGame(){
+  var s=sheet();if(!s)return;
+  var lg=s.dlog||[],trk=s.trk||{},keys=Object.keys(trk).filter(function(k){return BYKEY[k];});
+  var h='<h3>Game log</h3><p>What the defense has shown and which calls have worked. It is saved with this sheet until you start a new game.</p><h4>Defense by down</h4>';
+  if(!lg.length)h+='<p>Nothing logged yet. Set the Live look, then tap the down it showed up on.</p>';
+  else{
+    h+='<table class="gtab"><tr><th>Down</th><th>Logged</th><th>Most common. Tap one to set it as the live look.</th></tr>';
+    [1,2,3,4].forEach(function(dn){
+      var l=lg.filter(function(e){return e.d===dn;});if(!l.length)return;
+      var cnt={},ord=[];
+      l.forEach(function(e){var k=[e.cov||'',e.press||'',e.box||''].join('|');if(!cnt[k]){cnt[k]=0;ord.push(k);}cnt[k]++;});
+      ord.sort(function(a,b){return cnt[b]-cnt[a];});
+      h+='<tr><td><b>'+DOWN[dn]+'</b></td><td>'+l.length+'</td><td>'+ord.slice(0,3).map(function(k){
+        var v=k.split('|');
+        return '<button data-act="useLook" data-cov="'+esc(v[0])+'" data-press="'+esc(v[1])+'" data-box="'+esc(v[2])+'">'+esc(lookName({cov:v[0],press:v[1],box:v[2]}))+' ×'+cnt[k]+'</button>';
+      }).join('')+'</td></tr>';
+    });
+    h+='</table>';
+  }
+  h+='<h4>What is working</h4>';
+  if(!keys.length)h+='<p>No calls marked yet. Tap a call on the sheet, then Worked or Did not.</p>';
+  else{
+    var tot={Run:[0,0],Pass:[0,0]},con={},cord=[];
+    keys.forEach(function(k){
+      var p=BYKEY[k],v=trk[k],g=p.type==='Run'?'Run':'Pass';
+      tot[g][0]+=v[0];tot[g][1]+=v[1];
+      if(!con[p.concept]){con[p.concept]=[0,0];cord.push(p.concept);}
+      con[p.concept][0]+=v[0];con[p.concept][1]+=v[1];
+    });
+    function rate(v){var t=v[0]+v[1];return t?v[0]+' of '+t+' worked':'none marked yet';}
+    h+='<p><b>Run:</b> '+rate(tot.Run)+' · <b>Pass:</b> '+rate(tot.Pass)+'</p>';
+    cord.sort(function(a,b){return con[b][0]-con[a][0]||con[a][1]-con[b][1];});
+    h+='<table class="gtab"><tr><th>Concept</th><th>Worked</th><th>Did not</th></tr>'+cord.map(function(c){return '<tr><td>'+esc(c)+'</td><td class="gh">'+con[c][0]+'</td><td class="gm">'+con[c][1]+'</td></tr>';}).join('')+'</table>';
+    keys.sort(function(a,b){return trk[b][0]-trk[a][0]||trk[a][1]-trk[b][1];});
+    h+='<table class="gtab"><tr><th>Call</th><th>Worked</th><th>Did not</th></tr>'+keys.map(function(k){var p=BYKEY[k];return '<tr><td><b>'+esc(p.play)+'</b><br><span class="mut">'+esc(p.f)+'</span></td><td class="gh">'+trk[k][0]+'</td><td class="gm">'+trk[k][1]+'</td></tr>';}).join('')+'</table>';
+  }
+  h+='<div class="mact">'+(lg.length?'<button data-act="dlogUndo">Undo last defense entry</button>':'')+((lg.length||keys.length)?'<button class="red" data-act="newGame">Start a new game</button>':'')+'<button class="primary" id="gClose">Close</button></div>';
+  openModal(h,true);
+  $('#gClose').onclick=closeModal;
+}
+
 /* ---------- home ---------- */
 function renderHome(){
   $('#viewHome').innerHTML='<div class="home"><div id="homeDef"></div>'+'<div class="cardx hero"><h2>Build a call sheet from the Ohio State playbook</h2><p>Tell it what the defense shows and it fills a front and back call sheet from your playbook. Then swap, shift and reorder calls until it is yours.</p><div class="acts"><button class="pri" data-act="gen">Generate sheet</button><button data-act="tab" data-tab="sheet">Open call sheet</button></div></div>'+
@@ -1463,11 +1706,11 @@ function renderHome(){
 /* ---------- tabs ---------- */
 function setTab(t){
   ui.tab=t;ui.sel=null;
-  var views={home:['#viewHome','Home'],sheet:['#viewSheet','Sheet'],edit:['#viewEdit','Edit'],shift:['#viewShift','Shift'],book:['#viewBook','Book']};
+  var views={home:['#viewHome','Home'],sheet:['#viewSheet','Sheet'],edit:['#viewEdit','Edit'],shift:['#viewShift','Shift'],book:['#viewBook','Book'],log:['#viewLog','Log']};
   Object.keys(views).forEach(function(k){$(views[k][0]).hidden=k!==t;$('#tab'+views[k][1]).classList.toggle('on',k===t);});
   $('#bar').hidden=!(t==='sheet'||t==='edit');
   $('#defPanel').innerHTML='';
-  if(t==='home')renderHome();else if(t==='sheet'||t==='edit')renderSheet();else if(t==='shift')renderShift();else renderBook();
+  if(t==='home')renderHome();else if(t==='sheet'||t==='edit')renderSheet();else if(t==='shift')renderShift();else if(t==='log')renderLog();else renderBook();
   window.scrollTo(0,0);
 }
 
@@ -1610,6 +1853,34 @@ function act(a,el){
   switch(a){
     case 'tab': setTab(el.getAttribute('data-tab'));break;
     case 'side': ui.side=el.getAttribute('data-side');renderSheet();break;
+    case 'hit': case 'miss': case 'trkClear':
+      sec=findSec(sid);if(!sec||!s||!sec.calls[i])break;
+      var tkk=sec.calls[i].f+'|'+sec.calls[i].play;s.trk=s.trk||{};
+      if(a==='trkClear')delete s.trk[tkk];
+      else{var tv=s.trk[tkk]||[0,0];tv[a==='hit'?0:1]++;s.trk[tkk]=tv;}
+      ui.sel=null;save();renderSheet();toast(a==='trkClear'?'Marks cleared':(a==='hit'?'Marked: worked':'Marked: did not work'));break;
+    case 'dlog':
+      if(!s||!lookOn())break;
+      var dn=parseInt(el.getAttribute('data-d'),10);
+      s.dlog=s.dlog||[];s.dlog.push({d:dn,cov:ui.look.cov,press:ui.look.press,box:ui.look.box});
+      save();renderSheet();toast('Logged '+lookName(ui.look)+' on '+DOWN[dn]+' down');break;
+    case 'glog': openGame();break;
+    case 'qc': openQuick();break;
+    case 'qcset': if(el.getAttribute('data-dn'))ui.qc.dn=+el.getAttribute('data-dn');if(el.getAttribute('data-d'))ui.qc.d=el.getAttribute('data-d');openQuick();break;
+    case 'qhit': case 'qmiss':
+      if(!s)break;var qk=el.getAttribute('data-k');s.trk=s.trk||{};var qv=s.trk[qk]||[0,0];qv[a==='qhit'?0:1]++;s.trk[qk]=qv;save();renderSheet();openQuick();break;
+    case 'useLook':
+      ui.look={cov:inList(LCOV,el.getAttribute('data-cov')||''),press:inList(LPRESS,el.getAttribute('data-press')||''),box:inList(LBOX,el.getAttribute('data-box')||'')};
+      store.set('csl.look',ui.look);closeModal();
+      if(ui.tab!=='sheet')setTab('sheet');else renderSheet();
+      toast('Live look: '+lookName(ui.look));break;
+    case 'dlogUndo': if(s&&s.dlog&&s.dlog.length){s.dlog.pop();save();renderSheet();openGame();}break;
+    case 'newGame':
+      if(!s)break;
+      ask({title:'Start a new game?',text:'This clears the worked / did not marks and the defense log on "'+s.name+'". The calls stay as they are.',ok:'Clear the log'}).then(function(ok){
+        if(!ok)return;s.trk={};s.dlog=[];save();renderSheet();toast('Game log cleared');
+      });break;
+    case 'lookClear': ui.look={cov:'',press:'',box:''};store.set('csl.look',ui.look);renderSheet();break;
     case 'style': ui.style=ui.style==='sheet'?'std':'sheet';store.set('csl.style',ui.style);renderSheet();break;
     case 'flip': ui.side=ui.side==='f'?'b':'f';renderSheet();break;
     case 'fs': if(ui.fs)exitFs();else enterFs();break;
@@ -1737,6 +2008,12 @@ document.addEventListener('click',function(e){
   if(e.target.id==='modal')cancelModal();
 });
 document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(!$('#modal').hidden)cancelModal();else if(ui.fs){ui.fs=false;renderSheet();}});
+document.addEventListener('change',function(e){
+  var k=e.target&&e.target.getAttribute?e.target.getAttribute('data-look'):null;
+  if(!k)return;
+  ui.look[k]=e.target.value;store.set('csl.look',ui.look);renderSheet();
+  var again=$('[data-look="'+k+'"]');if(again)again.focus();
+});
 $('#selSheet').addEventListener('change',function(e){activeId=e.target.value;ui.target=null;ui.sel=null;save();renderSheet();});
 window.addEventListener('beforeprint',function(){$$('.rw.open').forEach(function(x){x.classList.remove('open');});});
 buildSets();
