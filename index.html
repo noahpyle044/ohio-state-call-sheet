@@ -222,9 +222,9 @@ button{cursor:pointer}
 .ptitle{display:none}
 .pg.off{display:none}
 .pages{padding-top:6px}
-.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start;font-size:clamp(9px,.8vw,12.5px);font-family:var(--font-display);font-stretch:92%}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start;font-size:clamp(10px,.9vw,14px);font-family:var(--font-display);font-stretch:92%}
 .card.fs .cols{font-size:clamp(10px,.98vw,19px)}
-.col{display:flex;flex-direction:column;gap:9px;min-width:0}
+.col{display:flex;flex-direction:column;gap:12px;min-width:0}
 .blk{border:1.5px solid #111;background:#fff;overflow:hidden}
 .bh{padding:.3em .55em;font-weight:800;font-stretch:100%;text-transform:uppercase;font-size:1.5em;line-height:1.1;color:#111;background:#111;border-bottom:1.5px solid #111}
 .edit .bh{cursor:pointer}
@@ -235,11 +235,11 @@ button{cursor:pointer}
 .band.run{background:var(--bn-run)}.band.qs{background:var(--bn-qs)}.band.dp{background:var(--bn-dp)}.band.rpo{background:var(--bn-rpo)}
 .band.sub{background:#e3e3e3;color:#444;font-size:.74em;border-top:1px solid #bbb}
 .band.bl{background:#5aa2ea}.band.or{background:#f2a65a}
-.r{display:grid;grid-template-columns:2.4em 1.9em .9em minmax(0,1fr);gap:.4em;align-items:start;padding:.13em .5em;border-top:1px solid #d6d6d6;line-height:1.12;text-transform:uppercase;cursor:pointer;font-size:1.04em}
+.r{display:grid;grid-template-columns:2.4em 1.9em .9em minmax(0,1fr);gap:.4em;align-items:start;padding:.22em .5em;border-top:1px solid #d6d6d6;line-height:1.15;text-transform:uppercase;cursor:pointer;font-size:1.04em}
 .r.hs{grid-template-columns:4.2em 1.9em .9em minmax(0,1fr)}
 .rn{color:#777;text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
 .sdn{font-weight:800;white-space:nowrap;font-size:.95em}
-.pb{border:1px solid #111;border-radius:2px;text-align:center;font-weight:700;font-size:.92em;line-height:1.08;background:#fff;color:#111}
+.pb{border:1px solid #111;border-radius:2px;text-align:center;font-weight:700;font-size:.92em;line-height:1.25;background:#fff;color:#111}
 .ty{font-weight:800;text-align:center;color:#111}
 .ln{min-width:0;overflow-wrap:anywhere}
 .ln .fm{font-weight:400}
@@ -251,22 +251,6 @@ button{cursor:pointer}
 .bd.st,.bd.sh{border:0;background:none;padding:0;font-size:1.05em;font-weight:800}
 .legend .bd{margin-left:0;font-size:.95em;padding:0 .35em}
 .rw.open .r{background:#fff3a6}
-/* live look: marks the best calls for the defense on the field, the sheet itself is not changed */
-.lookbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 10px;margin-top:4px;border:2px solid #111;border-radius:6px;background:#f3f3f3;font-family:var(--font-body)}
-.lookbar .lkt{font-family:var(--font-display);font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.04em}
-.lookbar select{min-height:40px;max-width:100%;border:2px solid #111;border-radius:6px;background:#fff;color:#111;padding:4px 8px;font-size:16px;font-weight:600}
-.lookbar select.on{background:#ffe680}
-.lookbar .lkn{flex:1 1 240px;min-width:0;font-size:14px;line-height:1.3;color:#333}
-.lookbar .lkn i{display:inline-block;width:1em;height:.9em;background:#bdeeb4;border-left:.3em solid #12752e;vertical-align:-.08em;margin-right:.35em}
-@media screen{
-.r.lkb{background:#bdeeb4;box-shadow:inset .35em 0 0 #12752e}
-.r.lkb .rn{color:#333}
-.r.lkx{opacity:.4}
-.rw.open .r.lkb{background:#fff3a6}
-.rw.open .r.lkx{opacity:1}
-}
-.snap .r.lkb{background:none;box-shadow:none}
-.snap .r.lkx{opacity:1}
 .cacts{display:none;gap:6px;flex-wrap:wrap;padding:8px 10px 10px;background:#ececec;font-family:var(--font-body);font-stretch:100%;text-transform:none}
 .rw.open .cacts{display:flex}
 .cacts button,.sft button{border:1px solid #9a9a9a;background:#fff;color:#111;border-radius:6px;padding:5px 10px;min-height:36px;font-size:13px;font-weight:500;font-family:var(--font-body)}
@@ -282,9 +266,9 @@ button{cursor:pointer}
 .swrow.mv{display:flex;flex-direction:column;align-items:flex-start;gap:0}
 .swrow.cur{background:var(--surface2)}
 .swrow:last-child{border-bottom:0}
-@media (max-width:1000px){.cols{grid-template-columns:repeat(2,minmax(0,1fr));font-size:11px}.card.fs .cols{font-size:12px}}
-@media (max-width:560px){.cols{grid-template-columns:minmax(0,1fr);font-size:12px}.card.fs .cols{font-size:13px}.ttl .app{font-size:22px}.seg button{padding:4px 14px}}
-.snap .cbtns,.snap .flipbar,.snap .lookbar,.snap .sft,.snap .cacts,.snap .addrow{display:none!important}
+@media (max-width:1000px){.cols{grid-template-columns:repeat(2,minmax(0,1fr));font-size:12px}.card.fs .cols{font-size:12px}}
+@media (max-width:560px){.cols{grid-template-columns:minmax(0,1fr);font-size:13px}.card.fs .cols{font-size:13px}.ttl .app{font-size:22px}.seg button{padding:4px 14px}}
+.snap .cbtns,.snap .flipbar,.snap .sft,.snap .cacts,.snap .addrow{display:none!important}
 .snap .ptitle{display:flex}
 .snap .blk.on{box-shadow:none}
 .ptitle{flex-wrap:wrap;align-items:center;gap:4px 16px;padding-bottom:6px;margin-bottom:6px;border-bottom:3px solid #111}
@@ -300,7 +284,7 @@ button{cursor:pointer}
   }
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body{background:#fff}
-  .top,.foot,.flipbar,.lookbar,.cbtns,.sft,.cacts,.addrow,#viewBook,#viewShift,#viewEdit,#viewHome,#defPanel,.bar,.toast,.modal,.ttl{display:none!important}
+  .top,.foot,.flipbar,.cbtns,.sft,.cacts,.addrow,#viewBook,#viewShift,#viewEdit,#viewHome,#defPanel,.bar,.toast,.modal,.ttl{display:none!important}
   #viewSheet{display:block!important}
   .wrap{max-width:none;padding:0}
   .card,.card.fs{position:static;border:0;padding:0;overflow:visible;border-radius:0}
@@ -310,7 +294,7 @@ button{cursor:pointer}
   .ptitle{display:flex!important;padding-bottom:3px;margin-bottom:5px;border-bottom-width:2px}
   .ptitle .app{font-size:17px}.ptitle .sn{font-size:13px}
   .ptitle .legend{font-size:8.5px;gap:2px 14px}
-  .cols,.card.fs .cols{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px;font-size:6.4px;font-stretch:78%}
+  .cols,.card.fs .cols{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px;font-size:6.9px;font-stretch:78%}
   .col{gap:5px}
   .blk{break-inside:avoid;border-width:1px}
   .bh{font-size:1.35em}
@@ -336,34 +320,52 @@ button{cursor:pointer}
 .pkl{max-height:78vh}
 }
 .card.fs{padding:max(8px,env(safe-area-inset-top,0px)) 10px 8px}
-.card.fs .ttl,.card.fs .flipbar,.card.fs .lookbar{zoom:.8}
+.card.fs .ttl,.card.fs .flipbar{zoom:.8}
 .card.fs .flipbar{padding-block:4px}
 #sheetBody:fullscreen{background:#fff;overflow:auto}
 #sheetBody:-webkit-full-screen{background:#fff;overflow:auto}
-.card.fs .ttl,.card.fs .flipbar,.card.fs .lookbar{zoom:.7}
-/* must call box */
-.bh.mc{background:#b80d0d;color:#fff}
-.mcb{display:inline-block;width:.95em;height:.95em;border:1.5px solid #111;border-radius:2px;margin-right:.4em;vertical-align:-.12em;text-align:center;font-size:.9em;line-height:.85;font-weight:900;background:#fff}
-.mcb.on{background:#111;color:#fff}
-/* game log: worked / did not marks and the defense by down */
-.trk{margin-left:.4em;font-weight:800;white-space:nowrap}
-.trk .h{color:#12752e}
-.trk .m{color:#b80d0d;margin-left:.25em}
-.cacts button.ok{border-color:#12752e;color:#12752e;font-weight:700}
-.cacts button.no{border-color:#b80d0d;color:#b80d0d;font-weight:700}
-.lookbar .lklog{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px;color:#333}
-.lookbar .lklog button{border:2px solid #111;border-radius:6px;background:#fff;color:#111;min-height:38px;padding:4px 12px;font-weight:700;font-size:15px}
-.lookbar .lklog button:disabled{opacity:.4;cursor:default}
-.lookbar .lklog button.gl{background:#ffe680;margin-left:auto}
-.gtab{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:6px}
-.gtab th,.gtab td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
-.gtab th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#555}
-.gtab button{border:1.5px solid #111;background:#fff;color:#111;border-radius:5px;padding:2px 10px;min-height:34px;font-weight:600;font-size:13px;margin:2px 4px 2px 0}
-.gtab .gh{color:#12752e;font-weight:700}
-.gtab .gm{color:#b80d0d;font-weight:700}
-.panel h4{margin:14px 0 4px;font-size:17px}
-.snap .trk{display:none}
-@media print{.trk{display:none!important}}
+.card.fs .ttl,.card.fs .flipbar{zoom:.7}
+@media screen{.card:not(.fs) .cols{zoom:.88}}
+
+/* spreadsheet layout: formation | play, colour bars, yellow highlights */
+.cmp .cols{font-family:'Times New Roman',Times,'Liberation Serif',serif}
+.cmp .rn,.cmp .ty{display:none}
+.cmp .r{grid-template-columns:2em minmax(0,1fr);gap:.35em;padding:.08em .35em;border-top:1px solid #000;line-height:1.1;align-items:center}
+.cmp .r.hs{grid-template-columns:3.9em 2em minmax(0,1fr)}
+.cmp .pb{border:0;background:none;text-align:left;font-weight:700;color:#0070c0}
+.cmp .pb.p12{color:#00803c}.cmp .pb.p21,.cmp .pb.p22{color:#7030a0}.cmp .pb.p10,.cmp .pb.p01{color:#00808a}.cmp .pb.p20{color:#c55a00}.cmp .pb.p23,.cmp .pb.p32,.cmp .pb.p13,.cmp .pb.p14{color:#c00000}
+.cmp .ln{display:flex;align-items:center;gap:.5em}
+.cmp .ln .fm{flex:1 1 0;min-width:0;font-weight:600}
+.cmp .ln b{flex:1 1 0;min-width:0;font-weight:800}
+.cmp .ln .bd{flex:none;margin-left:0;border-radius:0}
+.cmp .r.stc{background:#ffff66}
+.cmp .sdn{font-weight:700}
+.cmp .blk{border:1.2px solid #000;border-radius:0}
+.cmp .bh{justify-content:center;text-align:center;font-family:'Times New Roman',Times,'Liberation Serif',serif;font-weight:800;letter-spacing:.03em;padding:.12em .4em;border-bottom:1px solid #000}
+.cmp .bh.y{background:#ffff00;color:#000}.cmp .bh.lb{background:#0070c0;color:#fff}.cmp .bh.lg{background:#00b050;color:#fff}.cmp .bh.lv{background:#7030a0;color:#fff}.cmp .bh.te{background:#00a0a0;color:#fff}.cmp .bh.sa{background:#e00000;color:#fff}.cmp .bh.pk{background:#ff66cc;color:#000}.cmp .bh.or{background:#ffc000;color:#000}
+.cmp .band{font-family:'Times New Roman',Times,'Liberation Serif',serif;text-align:center;letter-spacing:.06em;font-weight:800;border-top:1px solid #000;padding:0 .4em}
+.cmp .band.run{background:#f4b6b6}.cmp .band.qs{background:#bfe3f7}.cmp .band.dp{background:#8fc2ee}.cmp .band.rpo{background:#b6e3b6}.cmp .band.sub{background:#d9d9d9;color:#000}
+.cmp .rw.open .r{background:#fff3a6}
+@media print{
+  .cmp .r{grid-template-columns:11px minmax(0,1fr);gap:2px;padding:0 2px}
+  .cmp .r.hs{grid-template-columns:24px 11px minmax(0,1fr)}
+  .cmp .tx b,.cmp .ln b{font-size:7.6px}
+  .cmp .ln .fm{font-size:7px}
+  .cmp .ln{gap:3px}
+  .cmp .bh{font-size:11px;padding:1px 3px}
+  .cmp .pb{font-size:8px}
+  .cmp .bd{font-size:6.5px;min-width:9px;padding:0 1px;line-height:9px}
+}
+
+/* his thin, centred, solid bars */
+.cmp .bh{font-size:.92em;padding:.04em .3em;line-height:1.15;border-bottom:1px solid #000;text-transform:uppercase}
+.cmp .bh small{display:none}
+.cmp .bh.gb{background:#7f7f7f;color:#fff}.cmp .bh.sb{background:#ff7c3a;color:#000}.cmp .bh.sc{background:#ff9bb0;color:#000}.cmp .bh.dk{background:#000;color:#fff}.cmp .bh.k{background:#000;color:#fff}.cmp .bh.or{background:#ff3b30;color:#fff}
+
+.cmp .gbar{font-family:'Times New Roman',Times,'Liberation Serif',serif;font-weight:800;text-align:center;letter-spacing:.06em;font-size:1.2em;padding:.08em .3em;border-bottom:1px solid #000;color:#fff}
+.gbar.g-run{background:#00b050}.gbar.g-pass{background:#0070c0}.gbar.g-3rd{background:#000}.gbar.g-rz{background:#e00000}.gbar.g-clk{background:#7030a0}.gbar.g-spc{background:#404040}
+.cmp .blk .gbar~.bh{font-size:.88em}
+@media print{.cmp .gbar{font-size:10.5px;padding:1px 3px}}
 </style></head><body>
 
 <div class="wrap">
@@ -589,11 +591,9 @@ function pbPrefill(name){
 }
 
 /* ---------- scoring ---------- */
-var KALIAS={short:'3short',highred:'rz',twopt:'rz','3xl':'3xl',first:'3med',clock7:'clock',clock3:'clock',min4:'3med',min2:'clock'};
+var KALIAS={must:'base',short:'3short',highred:'rz',twopt:'rz','3xl':'3xl',first:'3med',clock7:'clock',clock3:'clock',min4:'3med',min2:'clock'};
 function scorePlay(p,kind,o){
   kind=KALIAS[kind]||kind;
-  /* route words in a run's name (Read Option, HB Choice) must not make it a must-call pass beater */
-  if(kind==='must'&&p.type==='Run')p={type:p.type,outside:p.outside,play:p.play,tags:{},fl:p.fl,f:p.f};
   var t=p.type,c=p.tags,run=t==='Run',ins=run&&!p.outside,out=run&&p.outside,pass=!run,s=0;
   var draw=/Draw/.test(p.play);
   switch(o.cov){
@@ -641,30 +641,9 @@ function scorePlay(p,kind,o){
     case 'runout': if(ins)s+=2; if(out)s+=.6; if(/Draw/.test(p.play))s-=1; break;
     case 'spec': if(p.fl.t)s+=4; if(/Jet|Wildcat|Orbit/.test(p.play))s+=1; break;
     case 'bb': if(p.fl.bb)s+=2; if(t==='Screen')s+=1.2; if(c.quick)s+=.8; break;
-    case 'eogrz': if(c.rz)s+=2; if(c.deep)s+=.8; if(c.flood)s+=.6; if(c.quick&&!c.rz)s-=1; break;
-    case 'eoghm': if(/Vertical/i.test(p.play))s+=3; if(/Shot|Fade|\bGO\b/.test(p.play))s+=1; if(c.deep)s+=1; break;
-    case 'fringe': if(t==='PA')s+=1; if(c.deep&&pass)s+=.6; if(c.flood)s+=.6; if(ins)s+=.8; if(c.cross)s+=.4; break;
     case 'shots': if(t==='PA')s+=1.5; if(c.deep)s+=1; if(/Shot/.test(p.play))s+=1.2; break;
   }
   return s;
-}
-
-/* ---------- live look ---------- */
-/* what the defense is in right now. It only marks calls already on the sheet, it never changes them. */
-var LCOV=[['','Any coverage'],['c0','Cover 0'],['c1','Cover 1 (man)'],['c2m','Cover 2 Man'],['c2','Cover 2'],['c3','Cover 3'],['c4','Cover 4'],['c6','Cover 6'],['three','Three-high']];
-var LPRESS=[['','Any pressure'],['heavy','Blitz'],['drops8','Drops 8'],['none','No blitz']];
-var LBOX=[['','Any box'],['light','Light box'],['heavy','Heavy box']];
-function inList(list,v){return list.some(function(a){return a[0]===v;})?v:'';}
-function lookOn(){var l=ui.look;return !!(l.cov||l.press||l.box);}
-/* per call in a box: 'b' best fit, 'x' poor fit, '' neither. Best is the top group in that box, so every box shows where to go first. */
-function lookMarks(sec){
-  /* route tags come from play names, so a run like Read Option would score as a man beater. Runs are judged as runs only here. */
-  var o=ui.look,v=sec.calls.map(function(c){
-    var p=BYKEY[c.f+'|'+c.play];if(!p)return 0;
-    return scorePlay(p.type==='Run'?{type:p.type,outside:p.outside,play:p.play,tags:{}}:p,'',o);
-  });
-  var mx=Math.max.apply(null,v.concat([0]));
-  return v.map(function(x){return (x>=1-1e-9&&x>=mx-.5-1e-9)?'b':(x<=-.5+1e-9?'x':'');});
 }
 
 /* ---------- sheet sections ---------- */
@@ -674,33 +653,29 @@ var OPEN1 = ['1-10 -25','2-6 -31','1-10 -42','2-8 -50','3-2 +49','1-10 +38','2-4
 var OPEN2 = ['1-10 -25','2-5 -30','1-10 -40','2-7 -48','3-4 +46','1-10 +33'];
 var DEFS = [
   /* front */
-  {id:'open',title:'Opening script',kind:'open',n:12,sits:OPEN1,side:'f',col:0,hd:'k',mode:'plain'},
+  {id:'open',title:'Openers',kind:'open',n:12,sits:OPEN1,side:'f',col:0,hd:'y',mode:'plain'},
   {id:'t12',title:'3rd & 1-2',kind:'3short',quota:{Run:5,Pass:2,PA:2},side:'f',col:0,hd:'y',mode:'sit'},
   {id:'t11',title:'3rd & 11+',kind:'3xl',n:9,side:'f',col:0,hd:'y',mode:'sit'},
-  {id:'must',title:'Must call',kind:'must',quota:{Run:2,Pass:2,PA:1,RPO:1},cap:2,side:'f',col:1,hd:'mc',mode:'plain'},
   {id:'p11',title:'11 personnel',kind:'base',pers:['11'],quota:{Run:9,Pass:9,PA:5,RPO:6,Screen:4},cap:3,side:'f',col:1,hd:'lb',mode:'type',star:1},
   {id:'p12',title:'12 personnel',kind:'base',pers:['12'],quota:{Run:7,Pass:7,PA:4,RPO:4,Screen:1},cap:5,side:'f',col:2,hd:'lg',mode:'type',star:1},
   {id:'t36',title:'3rd & 3-6',kind:'3med',quota:{Run:1,Pass:5,RPO:1,Screen:1},side:'f',col:2,hd:'y',mode:'sit'},
   {id:'p10',title:'10 / 01 / 20 personnel',kind:'base',pers:['10','01','20'],quota:{Run:2,Pass:3,Screen:2},cap:4,side:'f',col:2,hd:'te',mode:'type',star:1},
-  {id:'open2',title:'Opening 2nd half',kind:'open',n:6,rev:1,sits:OPEN2,side:'f',col:3,hd:'k',mode:'plain'},
+  {id:'must',title:'Must calls',kind:'must',quota:{Run:2,Pass:2,PA:1,RPO:1},cap:2,side:'f',col:3,hd:'sa',mode:'plain',star:1},
   {id:'p2b',title:'21 / 22 / heavy',kind:'base',pers:['21','22','23','32'],quota:{Run:8,Pass:3,PA:5},cap:5,side:'f',col:3,hd:'lv',mode:'type',subs:1,star:1},
   {id:'t710',title:'3rd & 7-10',kind:'3long',n:9,side:'f',col:3,hd:'y',mode:'sit'},
-  {id:'d4',title:'4th down',kind:'d4',groups:[{n:'4th & short',k:'short',cnt:3,cls:'or',types:['Run','PA','Pass']},{n:'4th & medium',k:'first',cnt:3,cls:'or'}],side:'f',col:3,hd:'y',mode:'groups',flat:1},
   /* back */
   {id:'short',title:'Short yardage',kind:'short',quota:{Run:3,Pass:2,PA:1},side:'b',col:0,hd:'pk',mode:'sit'},
   {id:'gl',title:'Goal line (+4 to +1)',kind:'gl',quota:{Run:5,PA:2,Pass:2},cap:3,side:'b',col:0,hd:'sa',mode:'sit'},
   {id:'scr',title:'Screens',kind:'screens',n:8,side:'b',col:0,hd:'dk',mode:'sit'},
   {id:'co',title:'Coming out (-1 to -20)',kind:'comingout',quota:{Run:4,Pass:4,PA:1,RPO:1},side:'b',col:1,hd:'gb',mode:'sit'},
-  {id:'fringe',title:'Fringe (+35 to +21)',kind:'fringe',quota:{Run:2,Pass:2,PA:1,RPO:1},side:'b',col:1,hd:'te',mode:'sit'},
-  {id:'twopt',title:'2-point',kind:'twopt',quota:{Run:2,PA:2,Pass:3},side:'b',col:1,hd:'sa',mode:'sit'},
-  {id:'shot',title:'Shot plays',kind:'shots',n:10,side:'b',col:1,hd:'dk',mode:'sit'},
-  {id:'hired',title:'High red (+20 to +11)',kind:'highred',quota:{Run:3,PA:1,Pass:2,RPO:1},side:'b',col:2,hd:'sb',mode:'sit'},
-  {id:'min4',title:'4-minute',kind:'min4',groups:[{n:'Run it out',k:'runout',cnt:7,cls:'bl'},{n:'Need a 1st down',k:'first',cnt:5,cls:'bl'}],side:'b',col:2,hd:'lv',mode:'groups'},
+  {id:'twopt',title:'2 point',kind:'twopt',quota:{Run:2,PA:2,Pass:3},side:'b',col:1,hd:'sa',mode:'sit'},
+  {id:'shot',title:'Shots',kind:'shots',n:10,side:'b',col:1,hd:'dk',mode:'sit'},
+  {id:'hired',title:'Redzone high (+20 to +11)',kind:'highred',quota:{Run:3,PA:1,Pass:2,RPO:1},side:'b',col:2,hd:'sb',mode:'sit'},
+  {id:'min4',title:'4 minute',kind:'min4',groups:[{n:'Run it out',k:'runout',cnt:7,cls:'bl'},{n:'Need a 1st down',k:'first',cnt:5,cls:'bl'}],side:'b',col:2,hd:'lv',mode:'groups'},
   {id:'spec',title:'Specials',kind:'spec',n:8,side:'b',col:2,hd:'dk',mode:'sit'},
-  {id:'lowred',title:'Low red (+10 to +5)',kind:'lowred',quota:{Run:2,PA:1,Pass:2,RPO:1},side:'b',col:3,hd:'sc',mode:'sit'},
-  {id:'min2',title:'2-minute',kind:'min2',groups:[{n:'Need 7',k:'clock7',cnt:9,cls:'or'},{n:'Need 3 / end of half',k:'clock3',cnt:7,cls:'or'}],side:'b',col:3,hd:'or',mode:'groups'},
-  {id:'bb',title:'Blitz beaters',kind:'bb',n:7,side:'b',col:3,hd:'dk',mode:'sit'},
-  {id:'last',title:'Last play',kind:'last',groups:[{n:'From the +25 to +10',k:'eogrz',cnt:4,cls:'or'},{n:'Deep heave',k:'eoghm',cnt:2,cls:'or'}],side:'b',col:3,hd:'or',mode:'groups',flat:1}
+  {id:'lowred',title:'Redzone low (+10 to +5)',kind:'lowred',quota:{Run:2,PA:1,Pass:2,RPO:1},side:'b',col:3,hd:'sc',mode:'sit'},
+  {id:'min2',title:'2 minute',kind:'min2',groups:[{n:'Need 7',k:'clock7',cnt:9,cls:'or'},{n:'Need 3 / end of half',k:'clock3',cnt:7,cls:'or'}],side:'b',col:3,hd:'or',mode:'groups'},
+  {id:'bb',title:'Blitz beaters',kind:'bb',n:7,side:'b',col:3,hd:'dk',mode:'sit'}
 ];
 function defOf(id){for(var i=0;i<DEFS.length;i++){if(DEFS[i].id===id)return DEFS[i];}return null;}
 
@@ -716,8 +691,6 @@ function poolFor(d,kind){
     case 'clock': case 'clock7': case 'clock3': return PLAYS.filter(function(p){return p.type!=='Run'&&p.type!=='RPO'&&NOHEAVY(p);});
     case 'runout': return PLAYS.filter(function(p){return p.type==='Run'&&NOHEAVY(p);});
     case 'screens': return PLAYS.filter(function(p){return p.type==='Screen';});
-    case 'eogrz': return PLAYS.filter(function(p){return (p.type==='Pass'||p.type==='PA')&&NOHEAVY(p)&&(p.tags.rz||p.tags.deep);});
-    case 'eoghm': return PLAYS.filter(function(p){return p.type==='Pass'&&/Vertical|\bGO\b|Fade|Seam|Post|Streak/i.test(p.play);});
     case 'shots': return PLAYS.filter(function(p){return (p.type==='Pass'||p.type==='PA')&&p.tags.deep;});
     case 'bb': return PLAYS.filter(function(p){return p.fl.bb&&p.type!=='Run';});
     case 'spec': return PLAYS.filter(function(p){return p.fl.t||SPEC_RE.test(p.play);});
@@ -763,11 +736,7 @@ function buildSection(d,o,gs){
   if(d.groups){
     d.groups.forEach(function(g,gi){
       var pool=poolFor(d,g.k);
-      /* a group can ask for a type in each slot, so 4th & short always carries a run, a play-action and a pass */
-      for(var i=0;i<g.cnt;i++){
-        var gl=g.types&&g.types[i]?pool.filter(function(p){return p.type===g.types[i];}):pool;
-        if(pool.length)take(gl.length?gl:pool,g.k,gi);
-      }
+      for(var i=0;i<g.cnt;i++){if(pool.length)take(pool,g.k,gi);}
     });
   }else{
     var pool=poolFor(d);
@@ -796,15 +765,14 @@ function buildSection(d,o,gs){
 function generate(o,keepOpen,prev){
   var gs={used:{},names:{}}, out=[], fresh=[];
   DEFS.forEach(function(d){
-    if(keepOpen&&prev&&(d.id==='open'||d.id==='open2')){
+    if(keepOpen&&prev&&d.id==='open'){
       var old=prev.sections.filter(function(s){return s.id===d.id;})[0];
       if(old){
         old.calls.forEach(function(c){var p=BYKEY[c.f+'|'+c.play];if(p)mark(gs,p);});
         out.push(JSON.parse(JSON.stringify(old)));return;
       }
     }
-    /* must calls are the best answers to this defense, picked on their own so they can repeat calls from other boxes */
-    var bs=buildSection(d,o,(d.id==='must'||d.id==='d4')?{used:{},names:{}}:gs);out.push(bs);fresh=fresh.concat(bs.calls);
+    var bs=buildSection(d,o,gs);out.push(bs);fresh=fresh.concat(bs.calls);
   });
   flavor(fresh,o);
   if(prev){
@@ -843,34 +811,25 @@ function upgrade(s){
     s.sections=(had?generate(s.opp||{},false,null):blankSections()).concat(cust);
     s.v=3;
   }
+  s.sections=s.sections.filter(function(x){return x.id!=='open2';});
   var gs={used:{},names:{}};
+  s.sections.forEach(function(x){x.calls.forEach(function(c){var p=BYKEY[c.f+'|'+c.play];if(p)mark(gs,p);});});
+  var hadCalls=s.sections.some(function(x){return x.calls.length;});
   DEFS.forEach(function(d){
     var sec=s.sections.filter(function(x){return x.id===d.id;})[0];
-    if(!sec){
-      /* a sheet saved before the Must call box existed gets it filled once, above 11 personnel */
-      /* [box it sits next to, 0 = before it / 1 = after it, the flag that says it was already added once] */
-      var nb={must:['p11',0,'mc'],fringe:['co',1,'fr'],d4:['t710',1,'d4f'],last:['bb',1,'lpf']}[d.id];
-      var fill=nb&&!s[nb[2]]&&s.sections.some(function(x){return x.calls.length;}),ugs={used:{},names:{}};
-      /* the fringe box avoids repeating calls already on the sheet, must calls may repeat them */
-      if(fill&&d.id!=='must'&&d.id!=='d4')s.sections.forEach(function(x){x.calls.forEach(function(c){var p=BYKEY[c.f+'|'+c.play];if(p)mark(ugs,p);});});
-      var ns=fill?buildSection(d,s.opp||{},ugs):{id:d.id,title:d.title,calls:[]};
-      var at=nb?s.sections.map(function(x){return x.id;}).indexOf(nb[0]):-1;
-      if(at>=0)s.sections.splice(at+nb[1],0,ns);else s.sections.push(ns);
-    }
+    if(!sec)s.sections.push(d.id==='must'&&hadCalls?buildSection(d,s.opp||{},gs):{id:d.id,title:d.title,calls:[]});
     else{
       sec.title=d.title;delete sec.sub;
       if(d.sits)sec.calls.forEach(function(c,i){if(!c.sit)c.sit=d.sits[i]||'';});
     }
   });
-  s.mc=1;s.fr=1;s.d4f=1;s.lpf=1;
 }
 
 /* ---------- state ---------- */
 var sheets = (store.get('csl.sheets',[])||[]).filter(function(s){return s&&s.id&&Array.isArray(s.sections);});
 sheets.forEach(function(s){s.sections.forEach(function(sec){sec.calls=(sec.calls||[]).filter(function(c){return BYKEY[c.f+'|'+c.play];});});});
 var activeId = store.get('csl.active',null);
-var ui = {tab:'sheet',side:'f',fs:false,sel:null,pend:null,target:null,tctx:'d',q:'',form:'',pers:'',type:'',concept:'',pi:null,fp:null,shiftFocus:null};
-(function(){var l=store.get('csl.look',null)||{};ui.look={cov:inList(LCOV,l.cov||''),press:inList(LPRESS,l.press||''),box:inList(LBOX,l.box||'')};ui.lkN={f:0,b:0};})();
+var ui = {style:store.get('csl.style','sheet'),tab:'sheet',side:'f',fs:false,sel:null,pend:null,target:null,tctx:'d',q:'',form:'',pers:'',type:'',concept:'',pi:null,fp:null,shiftFocus:null};
 function sheet(){return sheets.filter(function(s){return s.id===activeId;})[0]||null;}
 function save(){store.set('csl.sheets',sheets);store.set('csl.active',activeId);}
 function addSheet(name,o,sections){
@@ -943,10 +902,8 @@ function printSheet(){
   var css=Array.prototype.map.call(document.querySelectorAll('style'),function(s){return s.textContent;}).join('\n');
   var links=Array.prototype.map.call(document.querySelectorAll('link[rel=stylesheet]'),function(l){return l.outerHTML;}).join('');
   var clone=card.cloneNode(true);
-  Array.prototype.forEach.call(clone.querySelectorAll('.ttl,.chead,.flipbar,.lookbar,.addrow,.sft,.cacts,.trk'),function(x){x.parentNode.removeChild(x);});
-  Array.prototype.forEach.call(clone.querySelectorAll('.lkb,.lkx'),function(x){x.classList.remove('lkb');x.classList.remove('lkx');x.removeAttribute('title');});
-  Array.prototype.forEach.call(clone.querySelectorAll('.mcb'),function(x){x.className='mcb';x.textContent='';});
-  clone.className='card';
+  Array.prototype.forEach.call(clone.querySelectorAll('.ttl,.chead,.flipbar,.addrow,.sft,.cacts'),function(x){x.parentNode.removeChild(x);});
+  clone.className='card'+(card.classList.contains('cmp')?' cmp':'');
   var pgs=clone.querySelectorAll('.pg');
   if(pgs[0])pgs[0].setAttribute('data-s','f');
   if(pgs[1])pgs[1].setAttribute('data-s','b');
@@ -1034,7 +991,7 @@ function plan(sec){
     d.groups.forEach(function(g,gi){
       var list=items.filter(function(it){return (it.c.g||0)===gi;});
       if(!list.length)return;
-      out.push({band:g.n,cls:g.cls});if(d.flat)rows(list);else sub(list,false);
+      out.push({band:g.n,cls:g.cls});sub(list,false);
     });
   }else rows(items);
   (sec.ctx||[]).forEach(function(x){
@@ -1058,33 +1015,111 @@ function legendHtml(){
     '<span><i>−/+</i> Own/opp yard line</span><span><i>F / B</i> Field / boundary side</span>'+
     '<span><span class="bd c">C</span> Constraint</span><span><span class="bd bb">BB</span> Blitz beater</span><span><span class="bd t">T</span> Trick</span>';
 }
-function rowHtml(sec,L,it,num,edit,mk){
-  var p=it.p,c=it.c,hs=!!c.sit,s=sheet();
+function rowHtml(sec,L,it,num,edit){
+  var p=it.p,c=it.c,hs=!!c.sit;
   var a=' data-sec="'+sec.id+'" data-i="'+it.i+'"';
   var sel=ui.sel&&ui.sel.sec===sec.id&&ui.sel.i===it.i;
-  var tk=s&&s.trk?s.trk[p.key]:null;
-  var trk=tk?'<span class="trk" title="Worked / did not this game">'+(tk[0]?'<span class="h">'+tk[0]+'✓</span>':'')+(tk[1]?'<span class="m">'+tk[1]+'✗</span>':'')+'</span>':'';
-  /* in the Must call box a tick shows once the play has been called and marked */
-  var mcb=sec.id==='must'?'<span class="mcb'+(tk?' on':'')+'" title="'+(tk?'Called':'Not called yet')+'">'+(tk?'✓':'')+'</span>':'';
-  var acts='<div class="cacts"><button class="ok" data-act="hit"'+a+'>✓ Worked</button><button class="no" data-act="miss"'+a+'>✗ Did not</button>'+(tk?'<button data-act="trkClear"'+a+'>Clear marks</button>':'')+'<button class="swap" data-act="swap"'+a+'>Swap</button><button data-act="reroll"'+a+'>Re-roll</button><button data-act="moveTo"'+a+'>Move to…</button><button data-act="chgShift"'+a+'>Change shift</button><button data-act="noShift"'+a+'>No shift</button><button data-act="star"'+a+'>'+(c.st?'Remove ★':'Mark ★')+'</button>'+(L.sit?'<button data-act="sit"'+a+'>Situation</button>':'')+'<button data-act="up"'+a+'>Up</button><button data-act="down"'+a+'>Down</button><button class="danger" data-act="remove"'+a+'>Remove</button></div>';
-  return '<div class="rw'+(sel?' open':'')+'"'+a+'><div class="r'+(hs?' hs':'')+(mk==='b'?' lkb':(mk==='x'?' lkx':''))+'"'+(mk?' title="'+(mk==='b'?'Best fit':'Poor fit')+' for the live look"':'')+'>'+
+  var acts='<div class="cacts"><button class="swap" data-act="swap"'+a+'>Swap</button><button data-act="reroll"'+a+'>Re-roll</button><button data-act="moveTo"'+a+'>Move to…</button><button data-act="chgShift"'+a+'>Change shift</button><button data-act="noShift"'+a+'>No shift</button><button data-act="star"'+a+'>'+(c.st?'Remove ★':'Mark ★')+'</button>'+(L.sit?'<button data-act="sit"'+a+'>Situation</button>':'')+'<button data-act="up"'+a+'>Up</button><button data-act="down"'+a+'>Down</button><button class="danger" data-act="remove"'+a+'>Remove</button></div>';
+  return '<div class="rw'+(sel?' open':'')+'"'+a+'><div class="r'+(hs?' hs':'')+(c.st?' stc':'')+'">'+
     (hs?'<span class="sdn">'+esc(c.sit)+'</span>':'<span class="rn">'+num+'</span>')+
-    '<span class="pb">'+p.pers+'</span><span class="ty">'+tl(p)+'</span>'+
-    '<span class="ln">'+mcb+'<span class="fm">'+esc(c.f)+(c.sh?' <i>›</i> '+esc(c.sh):'')+'</span> <b>'+esc(c.play)+'</b>'+badges(p,c)+trk+'</span></div>'+acts+'</div>';
+    '<span class="pb p'+p.pers+'">'+p.pers+'</span><span class="ty">'+tl(p)+'</span>'+
+    '<span class="ln"><span class="fm">'+esc(c.f)+(c.sh?' <i>›</i> '+esc(c.sh):'')+'</span> <b>'+esc(c.play)+'</b>'+badges(p,c)+'</span></div>'+acts+'</div>';
 }
 function blkHtml(sec,start,edit){
-  var L=lay(sec),n=start,out='',mks=lookOn()?lookMarks(sec):null;
+  var L=lay(sec),n=start,out='';
   plan(sec).forEach(function(e){
     if(e.band)out+='<div class="band '+e.cls+'">'+esc(e.band)+'</div>';
-    else{
-      var mk=mks?mks[e.row.i]:'';
-      if(mk==='b')ui.lkN[L.side]++;
-      out+=rowHtml(sec,L,e.row,n++,edit,mk);
-    }
+    else out+=rowHtml(sec,L,e.row,n++,edit);
   });
   if(!sec.calls.length)out='<div class="none">'+(edit?'No calls yet. Tap Add plays to pick from the playbook.':'No calls.')+'</div>';
   var foot=edit?'<div class="sft"><button data-act="addHere" data-sec="'+sec.id+'">Add plays</button>'+(defOf(sec.id)?'<button data-act="rerollSec" data-sec="'+sec.id+'">Re-roll section</button>':'')+'<button class="danger" data-act="delSec" data-sec="'+sec.id+'">Remove section</button></div>':'';
   return '<div class="blk'+(edit&&sec.id===ui.target?' on':'')+'"><div class="bh '+L.hd+'"'+(edit?' data-act="target" data-sec="'+sec.id+'"':'')+'>'+esc(sec.title)+'</div>'+out+foot+'</div>';
+}
+
+/* ---------- spreadsheet layout: big group bars (RUN GAME, PASS GAME, 3RD DOWN ...) flowed into 4 columns ---------- */
+var CMP_F=[{t:'sec',id:'open'},{t:'sec',id:'must'},{t:'run',bar:'RUN GAME',cls:'g-run'},{t:'pass',bar:'PASS GAME',cls:'g-pass'},{t:'grp',bar:'3RD DOWN',cls:'g-3rd',ids:['t12','t36','t710','t11']}];
+var CMP_B=[{t:'sec',id:'short'},{t:'sec',id:'co'},{t:'sec',id:'twopt'},{t:'grp',bar:'REDZONE',cls:'g-rz',ids:['hired','lowred','gl']},{t:'grp',bar:'CLOCK',cls:'g-clk',ids:['min2','min4']},{t:'grp',bar:'SPECIAL PLAYS',cls:'g-spc',ids:['scr','shot','spec','bb']}];
+function cmpSec(s,id){return s.sections.filter(function(x){return x.id===id;})[0]||null;}
+function rowW(it){var n=(it.c.f+' '+it.c.play).length;return n>50?2.1:1.2;}
+function cmpSecLines(sec,withHead){
+  var Lh=lay(sec),out=[],cl=defOf(sec.id);
+  if(withHead)out.push({k:'head',w:1,h:'<div class="bh '+Lh.hd+'">'+esc(sec.title)+'</div>'});
+  plan(sec).forEach(function(e){
+    if(e.band)out.push({k:'band',w:.8,h:'<div class="band '+e.cls+'">'+esc(e.band)+'</div>'});
+    else out.push({k:'row',w:rowW(e.row),h:rowHtml(sec,Lh,e.row,0,false)});
+  });
+  if(!sec.calls.length)out.push({k:'row',w:1,h:'<div class="none">No calls.</div>'});
+  return out;
+}
+function cmpTypeLines(s,run){
+  var out=[],ids=['p11','p12','p10','p2b'];
+  function items(sec,f){return sec.calls.map(function(c,i){return {c:c,i:i,p:BYKEY[c.f+'|'+c.play]};}).filter(function(it){return it.p&&f(it.p);});}
+  function row(sec,it){return {k:'row',w:rowW(it),h:rowHtml(sec,lay(sec),it,0,false)};}
+  if(run){
+    ids.forEach(function(id){
+      var sec=cmpSec(s,id);if(!sec)return;var l=items(sec,function(p){return p.type==='Run';});
+      if(!l.length)return;
+      out.push({k:'band',w:.8,h:'<div class="band run">'+esc(sec.title)+'</div>'});
+      l.forEach(function(it){out.push(row(sec,it));});
+    });
+  }else{
+    BANDS.forEach(function(b){
+      if(b[0]==='run')return;var first=true;
+      ids.forEach(function(id){
+        var sec=cmpSec(s,id);if(!sec)return;var l=items(sec,function(p){return p.type!=='Run'&&bandOf(p)===b[0];});
+        l.forEach(function(it){
+          if(first){out.push({k:'band',w:.8,h:'<div class="band '+b[0]+'">'+esc(b[1])+'</div>'});first=false;}
+          out.push(row(sec,it));
+        });
+      });
+    });
+  }
+  return out;
+}
+function cmpCols(s,side){
+  var cfg=(side==='f'?CMP_F:CMP_B).slice(),used={};
+  cfg.forEach(function(g){if(g.id)used[g.id]=1;(g.ids||[]).forEach(function(i){used[i]=1;});});
+  var groups=[];
+  cfg.forEach(function(g){
+    var lines=[];
+    if(g.t==='sec'){var sec=cmpSec(s,g.id);if(sec)lines=cmpSecLines(sec,true);groups.push({lines:lines});return;}
+    if(g.t==='run'||g.t==='pass'){lines=cmpTypeLines(s,g.t==='run');if(lines.length)groups.push({bar:g.bar,cls:g.cls,lines:lines});return;}
+    g.ids.forEach(function(id){var sec=cmpSec(s,id);if(sec)lines=lines.concat(cmpSecLines(sec,true));});
+    if(lines.length)groups.push({bar:g.bar,cls:g.cls,lines:lines});
+  });
+  s.sections.forEach(function(sec){
+    if(defOf(sec.id)||used[sec.id])return;var Lc=lay(sec);if(Lc.side!==side)return;
+    groups.push({lines:cmpSecLines(sec,true)});
+  });
+  groups.forEach(function(g,gi){
+    g.i=gi;
+    if(g.bar)g.lines.unshift({k:'gbar',w:1.4,h:'<div class="gbar '+g.cls+'">'+esc(g.bar)+'</div>'});
+  });
+  var total=0;groups.forEach(function(g){g.lines.forEach(function(l){total+=l.w;});});
+  var target=total/4,cols=[[],[],[],[]],ci=0,cur=0;
+  function isHead(l){return l.k==='gbar'||l.k==='head'||l.k==='band';}
+  groups.forEach(function(g){
+    g.lines.forEach(function(l){
+      if((cur+l.w>target||(l.k==='gbar'&&cur+11>target))&&ci<3&&cols[ci].length){
+        var carry=[];
+        while(cols[ci].length&&isHead(cols[ci][cols[ci].length-1].l)&&carry.length<3){var x=cols[ci].pop();carry.unshift(x);cur-=x.l.w;}
+        ci++;cur=0;
+        var need=g.bar&&!(carry.length&&carry[0].l.k==='gbar')&&l.k!=='gbar';
+        if(need){cols[ci].push({g:g,l:{k:'gbar',w:1.4,h:'<div class="gbar '+g.cls+'">'+esc(g.bar)+' (cont.)</div>'}});cur+=1.4;}
+        carry.forEach(function(x){cols[ci].push(x);cur+=x.l.w;});
+      }
+      cols[ci].push({g:g,l:l});cur+=l.w;
+    });
+  });
+  return cols.map(function(col){
+    var h='',open=-1;
+    col.forEach(function(x){
+      if(x.g.i!==open){if(open>=0)h+='</div>';h+='<div class="blk">';open=x.g.i;}
+      h+=x.l.h;
+    });
+    if(open>=0)h+='</div>';
+    return '<div class="col">'+h+'</div>';
+  }).join('');
 }
 function layoutOf(s){
   var res={f:[[],[],[],[]],b:[[],[],[],[]]};
@@ -1094,40 +1129,22 @@ function layoutOf(s){
 function renderSheet(){
   if(ui.tab==='edit')renderEdit();else if(ui.tab==='sheet')drawSheet();
 }
-function lookSel(k,list){
-  var v=ui.look[k];
-  return '<select data-look="'+k+'" aria-label="'+esc(list[0][1].replace('Any ',''))+'"'+(v?' class="on"':'')+'>'+list.map(function(a){return opt(a[0],a[1],a[0]===v);}).join('')+'</select>';
-}
-var DOWN={1:'1st',2:'2nd',3:'3rd',4:'4th'};
-function lookName(o){var b=[];if(o.cov)b.push(lbl(LCOV,o.cov));if(o.press)b.push(lbl(LPRESS,o.press));if(o.box)b.push(lbl(LBOX,o.box));return b.join(' · ');}
-function lookHtml(){
-  var s=sheet(),on=lookOn(),n=ui.lkN[ui.side],note;
-  if(!on)note='Pick what the defense is in right now. The best calls in each box turn green and nothing on your sheet changes.';
-  else if(n)note='<i></i>Best fit in each box, '+n+' on this side. Faded calls are a poor fit. Your sheet is not changed.';
-  else note='No call on this side stands out for this look. Faded calls are a poor fit. Your sheet is not changed.';
-  var logged=(s.dlog||[]).length+Object.keys(s.trk||{}).length;
-  return '<div class="lookbar"><span class="lkt">Live look</span>'+lookSel('cov',LCOV)+lookSel('press',LPRESS)+lookSel('box',LBOX)+
-    (on?'<button class="bk" data-act="lookClear">Clear</button>':'')+'<span class="lkn">'+note+'</span>'+
-    '<div class="lklog"><span>Log this look on</span>'+[1,2,3,4].map(function(dn){return '<button data-act="dlog" data-d="'+dn+'"'+(on?'':' disabled')+'>'+DOWN[dn]+'</button>';}).join('')+
-    '<button class="gl" data-act="glog">Game log'+(logged?' ('+logged+')':'')+'</button></div></div>';
-}
 function drawSheet(){
   renderSelect();
   var s=sheet(),el=$('#sheetBody');
   if(!s){el.innerHTML='<p class="empty">No sheets yet. Tap Generate sheet to start.</p>';return;}
   ensureTarget();
   var edit=false,lo=layoutOf(s),n=1,pg={};
-  ui.lkN={f:0,b:0};
   ['f','b'].forEach(function(sd){
+    if(ui.style==='sheet'){pg[sd]=cmpCols(s,sd);return;}
     pg[sd]=lo[sd].map(function(col){
       return '<div class="col">'+col.map(function(sec){var h=blkHtml(sec,n,edit);n+=sec.calls.length;return h;}).join('')+'</div>';
     }).join('');
   });
   function title(sd){return '<div class="ptitle"><span class="app">Call Sheet Builder</span><span class="sn">'+esc(s.name)+' · '+(sd==='f'?'Front':'Back')+'</span><div class="legend">'+legendHtml()+'</div></div>';}
-  el.innerHTML='<div class="card'+(ui.fs?' fs':'')+(edit?' edit':'')+'" id="card">'+
-    '<div class="ttl"><div class="l"><span class="app">Call Sheet Builder</span><span class="sn">'+esc(s.name)+'</span></div><div class="cbtns"><button class="by" data-act="adj">Adjust defense</button><button class="bk" data-act="fs">'+(ui.fs?'Exit full screen':'Full screen')+'</button></div></div>'+
+  el.innerHTML='<div class="card'+(ui.fs?' fs':'')+(edit?' edit':'')+(ui.style==='sheet'?' cmp':'')+'" id="card">'+
+    '<div class="ttl"><div class="l"><span class="app">Call Sheet Builder</span><span class="sn">'+esc(s.name)+'</span></div><div class="cbtns"><button class="bk" data-act="style">'+(ui.style==='sheet'?'Layout: Spreadsheet':'Layout: Standard')+'</button><button class="by" data-act="adj">Adjust defense</button><button class="bk" data-act="fs">'+(ui.fs?'Exit full screen':'Full screen')+'</button></div></div>'+
     '<div class="flipbar"><div class="seg"><button class="'+(ui.side==='f'?'on':'')+'" data-act="side" data-side="f">FRONT</button><button class="'+(ui.side==='b'?'on':'')+'" data-act="side" data-side="b">BACK</button></div><button class="by" data-act="flip">Flip ↻</button><div class="legend">'+legendHtml()+'</div></div>'+
-    lookHtml()+
     '<div class="pages"><div class="pg'+(ui.side==='f'?'':' off')+'">'+title('f')+'<div class="cols">'+pg.f+'</div></div><div class="pg'+(ui.side==='b'?'':' off')+'">'+title('b')+'<div class="cols">'+pg.b+'</div></div></div>'+
     (edit?'':'')+'</div>';
   if(ui.fs)fitFs();
@@ -1185,14 +1202,13 @@ function purposeOf(p){
 }
 var CTXI={
   open:['Drive','Your scripted first drive. A mix of run, quick game and play-action.'],
-  open2:['Second-half series','The same idea coming out of the break.'],
+  must:['Must call','Your go-to plays. Call these no matter what.'],
   t12:['Short to go','Convert with a short run or a quick throw.'],
   t36:['Medium to go','Throws that stay on schedule.'],
   t710:['Long to go','Throws that reach the sticks.'],
   t11:['Very long to go','Everything has to travel.'],
   p11:['11 personnel','1 RB, 1 TE, 3 WR.'],p12:['12 personnel','1 RB, 2 TE, 2 WR.'],
   p2b:['Two backs and heavy','21, 22, 23 and 32 personnel.'],p10:['Spread sets','10, 01 and 20 personnel.'],
-  must:['Must call','The calls you have to get to this game.'],fringe:['Fringe','Plus 35 to plus 21, where field goal range changes the call.'],
   short:['Short yardage','One yard to get.'],gl:['Goal line','Inside the 5.'],scr:['Screens','Answers to pressure.'],
   co:['Coming out','Backed up near your own end zone.'],twopt:['Two-point tries','From the 2.'],shot:['Shot plays','Deep tries and play-action.'],
   hired:['High red zone','Plus 20 to plus 11.'],spec:['Specials','Tricks and gadgets.'],lowred:['Low red zone','Plus 10 to plus 5.'],bb:['Blitz beaters','Quick answers to pressure.']
@@ -1231,7 +1247,7 @@ function openDef(mode,host){
     defSel('dOff','Off-script calls',OFFL,o.off||'some')+defSel('dShf','Pre-snap shifts',SHFL,o.shf||'normal')+'</div>'+
     '<fieldset class="deff"><legend>Opponent defense</legend><div class="defgrid"><label class="fld"><span>Their playbook</span><select id="dPb">'+pbHtml(o.pb)+'</select></label>'+
     defSel('dBox','Box count',BOX,o.box)+defSel('dCov','Coverage',COV,o.cov)+defSel('dPress','Pressure',PRESS,o.press)+defSel('dWeak','Where they\'re weakest',WEAK,o.weak)+'</div></fieldset>';
-  if(mode!=='new')h+='<label class="chk" style="margin-top:12px"><input type="checkbox" id="dKeep" checked> Keep my opening script and 2nd-half series as they are</label>';
+  if(mode!=='new')h+='<label class="chk" style="margin-top:12px"><input type="checkbox" id="dKeep" checked> Keep my opening script as it is</label>';
   h+='<div class="acts">'+(mode==='adjust'?'<button class="pri" id="dUpd">Update this sheet</button><button id="dNew">Save as a new sheet</button>':'<button class="pri" id="dNew">Generate</button>')+'<button id="dNo">Cancel</button></div>'+
     '<p class="note">'+(mode==='adjust'?'Generated sections are redrawn for the new read, so hand edits inside them are replaced. Save as a new sheet to keep this one.':'Builds a real call sheet: an opening script, a base menu by personnel (11, 12, heavy) for normal downs, and situation boxes for 3rd down, short yardage, red zone, goal line and the clock. The defense decides which plays rank highest.')+'</p></div>';
   $(host).innerHTML=h;
@@ -1412,52 +1428,10 @@ function formPick(title,text,from,onPick){
   $('#fpClose').onclick=closeModal;
 }
 
-/* ---------- game log ---------- */
-function openGame(){
-  var s=sheet();if(!s)return;
-  var lg=s.dlog||[],trk=s.trk||{},keys=Object.keys(trk).filter(function(k){return BYKEY[k];});
-  var h='<h3>Game log</h3><p>What the defense has shown and which calls have worked. It is saved with this sheet until you start a new game.</p><h4>Defense by down</h4>';
-  if(!lg.length)h+='<p>Nothing logged yet. Set the Live look, then tap the down it showed up on.</p>';
-  else{
-    h+='<table class="gtab"><tr><th>Down</th><th>Logged</th><th>Most common. Tap one to set it as the live look.</th></tr>';
-    [1,2,3,4].forEach(function(dn){
-      var l=lg.filter(function(e){return e.d===dn;});if(!l.length)return;
-      var cnt={},ord=[];
-      l.forEach(function(e){var k=[e.cov||'',e.press||'',e.box||''].join('|');if(!cnt[k]){cnt[k]=0;ord.push(k);}cnt[k]++;});
-      ord.sort(function(a,b){return cnt[b]-cnt[a];});
-      h+='<tr><td><b>'+DOWN[dn]+'</b></td><td>'+l.length+'</td><td>'+ord.slice(0,3).map(function(k){
-        var v=k.split('|');
-        return '<button data-act="useLook" data-cov="'+esc(v[0])+'" data-press="'+esc(v[1])+'" data-box="'+esc(v[2])+'">'+esc(lookName({cov:v[0],press:v[1],box:v[2]}))+' ×'+cnt[k]+'</button>';
-      }).join('')+'</td></tr>';
-    });
-    h+='</table>';
-  }
-  h+='<h4>What is working</h4>';
-  if(!keys.length)h+='<p>No calls marked yet. Tap a call on the sheet, then Worked or Did not.</p>';
-  else{
-    var tot={Run:[0,0],Pass:[0,0]},con={},cord=[];
-    keys.forEach(function(k){
-      var p=BYKEY[k],v=trk[k],g=p.type==='Run'?'Run':'Pass';
-      tot[g][0]+=v[0];tot[g][1]+=v[1];
-      if(!con[p.concept]){con[p.concept]=[0,0];cord.push(p.concept);}
-      con[p.concept][0]+=v[0];con[p.concept][1]+=v[1];
-    });
-    function rate(v){var t=v[0]+v[1];return t?v[0]+' of '+t+' worked':'none marked yet';}
-    h+='<p><b>Run:</b> '+rate(tot.Run)+' · <b>Pass:</b> '+rate(tot.Pass)+'</p>';
-    cord.sort(function(a,b){return con[b][0]-con[a][0]||con[a][1]-con[b][1];});
-    h+='<table class="gtab"><tr><th>Concept</th><th>Worked</th><th>Did not</th></tr>'+cord.map(function(c){return '<tr><td>'+esc(c)+'</td><td class="gh">'+con[c][0]+'</td><td class="gm">'+con[c][1]+'</td></tr>';}).join('')+'</table>';
-    keys.sort(function(a,b){return trk[b][0]-trk[a][0]||trk[a][1]-trk[b][1];});
-    h+='<table class="gtab"><tr><th>Call</th><th>Worked</th><th>Did not</th></tr>'+keys.map(function(k){var p=BYKEY[k];return '<tr><td><b>'+esc(p.play)+'</b><br><span class="mut">'+esc(p.f)+'</span></td><td class="gh">'+trk[k][0]+'</td><td class="gm">'+trk[k][1]+'</td></tr>';}).join('')+'</table>';
-  }
-  h+='<div class="mact">'+(lg.length?'<button data-act="dlogUndo">Undo last defense entry</button>':'')+((lg.length||keys.length)?'<button class="red" data-act="newGame">Start a new game</button>':'')+'<button class="primary" id="gClose">Close</button></div>';
-  openModal(h,true);
-  $('#gClose').onclick=closeModal;
-}
-
 /* ---------- home ---------- */
 function renderHome(){
   $('#viewHome').innerHTML='<div class="home"><div id="homeDef"></div>'+'<div class="cardx hero"><h2>Build a call sheet from the Ohio State playbook</h2><p>Tell it what the defense shows and it fills a front and back call sheet from your playbook. Then swap, shift and reorder calls until it is yours.</p><div class="acts"><button class="pri" data-act="gen">Generate sheet</button><button data-act="tab" data-tab="sheet">Open call sheet</button></div></div>'+
-    '<div class="cardx"><h3>1. Read the defense</h3><p>Pick their playbook, coverage, pressure, box count and where they are weakest. Adjust defense redraws the calls when the read changes. Live look, above the call sheet, marks the best calls for what they are in right now and leaves the sheet as it is. Tap a call to mark it Worked or Did not, and open Game log to see what is hitting.</p></div>'+
+    '<div class="cardx"><h3>1. Read the defense</h3><p>Pick their playbook, coverage, pressure, box count and where they are weakest. Adjust defense redraws the calls when the read changes.</p></div>'+
     '<div class="cardx"><h3>2. Edit the calls</h3><p>In the Edit tab, select a context, add plays from the playbook, swap a play, move it to another personnel group or add a shift.</p></div>'+
     '<div class="cardx"><h3>3. Learn the sets</h3><p>The Playbook tab lists every set and play. The Shift chart keeps the shifts you like for each set.</p></div>'+
     '<div class="cardx"><h3>4. Print it</h3><p>Print / PDF makes two landscape pages, front and back. Save image and Export CSV are next to it.</p></div></div>';
@@ -1613,34 +1587,11 @@ function act(a,el){
   switch(a){
     case 'tab': setTab(el.getAttribute('data-tab'));break;
     case 'side': ui.side=el.getAttribute('data-side');renderSheet();break;
+    case 'style': ui.style=ui.style==='sheet'?'std':'sheet';store.set('csl.style',ui.style);renderSheet();break;
     case 'flip': ui.side=ui.side==='f'?'b':'f';renderSheet();break;
     case 'fs': if(ui.fs)exitFs();else enterFs();break;
     case 'gen': if(ui.tab==='home')openDef('new','#homeDef');else openDef('new');break;
     case 'adj': openDef('adjust');break;
-    case 'hit': case 'miss': case 'trkClear':
-      sec=findSec(sid);if(!sec||!s||!sec.calls[i])break;
-      var tkk=sec.calls[i].f+'|'+sec.calls[i].play;s.trk=s.trk||{};
-      if(a==='trkClear')delete s.trk[tkk];
-      else{var tv=s.trk[tkk]||[0,0];tv[a==='hit'?0:1]++;s.trk[tkk]=tv;}
-      ui.sel=null;save();renderSheet();toast(a==='trkClear'?'Marks cleared':(a==='hit'?'Marked: worked':'Marked: did not work'));break;
-    case 'dlog':
-      if(!s||!lookOn())break;
-      var dn=parseInt(el.getAttribute('data-d'),10);
-      s.dlog=s.dlog||[];s.dlog.push({d:dn,cov:ui.look.cov,press:ui.look.press,box:ui.look.box});
-      save();renderSheet();toast('Logged '+lookName(ui.look)+' on '+DOWN[dn]+' down');break;
-    case 'glog': openGame();break;
-    case 'useLook':
-      ui.look={cov:inList(LCOV,el.getAttribute('data-cov')||''),press:inList(LPRESS,el.getAttribute('data-press')||''),box:inList(LBOX,el.getAttribute('data-box')||'')};
-      store.set('csl.look',ui.look);closeModal();
-      if(ui.tab!=='sheet')setTab('sheet');else renderSheet();
-      toast('Live look: '+lookName(ui.look));break;
-    case 'dlogUndo': if(s&&s.dlog&&s.dlog.length){s.dlog.pop();save();renderSheet();openGame();}break;
-    case 'newGame':
-      if(!s)break;
-      ask({title:'Start a new game?',text:'This clears the worked / did not marks and the defense log on "'+s.name+'". The calls stay as they are.',ok:'Clear the log'}).then(function(ok){
-        if(!ok)return;s.trk={};s.dlog=[];save();renderSheet();toast('Game log cleared');
-      });break;
-    case 'lookClear': ui.look={cov:'',press:'',box:''};store.set('csl.look',ui.look);renderSheet();break;
     case 'swap': ui.pend={sec:sid,i:i};openSwap();break;
     case 'pick': doSwap(parseInt(el.getAttribute('data-id'),10));break;
     case 'moveTo': ui.pend={sec:sid,i:i};openMove();break;
@@ -1686,7 +1637,7 @@ function act(a,el){
       ask({title:'New blank sheet',value:'Sheet '+(sheets.length+1),ok:'Create'}).then(function(n){if(!n)return;addSheet(n,{pb:'',cov:'',press:'',box:'',weak:''},blankSections());renderSheet();});break;
     case 'dup':
       if(!s)break;
-      var c=JSON.parse(JSON.stringify(s));c.id=uid();c.name=s.name+' copy';delete c.trk;delete c.dlog;sheets.push(c);activeId=c.id;ui.target=null;save();renderSheet();toast('Sheet duplicated');break;
+      var c=JSON.parse(JSON.stringify(s));c.id=uid();c.name=s.name+' copy';sheets.push(c);activeId=c.id;ui.target=null;save();renderSheet();toast('Sheet duplicated');break;
     case 'rename':
       if(!s)break;
       ask({title:'Rename sheet',value:s.name,ok:'Save'}).then(function(n){if(!n)return;s.name=n;save();renderSheet();});break;
@@ -1763,12 +1714,6 @@ document.addEventListener('click',function(e){
   if(e.target.id==='modal')cancelModal();
 });
 document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(!$('#modal').hidden)cancelModal();else if(ui.fs){ui.fs=false;renderSheet();}});
-document.addEventListener('change',function(e){
-  var k=e.target&&e.target.getAttribute?e.target.getAttribute('data-look'):null;
-  if(!k)return;
-  ui.look[k]=e.target.value;store.set('csl.look',ui.look);renderSheet();
-  var again=$('[data-look="'+k+'"]');if(again)again.focus();
-});
 $('#selSheet').addEventListener('change',function(e){activeId=e.target.value;ui.target=null;ui.sel=null;save();renderSheet();});
 window.addEventListener('beforeprint',function(){$$('.rw.open').forEach(function(x){x.classList.remove('open');});});
 buildSets();
